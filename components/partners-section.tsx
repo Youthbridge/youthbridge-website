@@ -6,7 +6,7 @@ export function PartnersSection() {
   return (
     <section className="w-full py-12 px-4 bg-white">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-wrap items-start gap-6 lg:gap-8">
+        <div className="flex flex-wrap items-center justify-between gap-6 lg:gap-8">
 
           {/* Gefördert durch */}
           <div className="flex flex-col items-start gap-3">
