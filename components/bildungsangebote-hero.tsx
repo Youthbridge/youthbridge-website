@@ -39,6 +39,20 @@ export function BildungsangeboteHero() {
   const [animating, setAnimating] = useState(false)
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const [paused, setPaused] = useState(false)
+  const [touchStart, setTouchStart] = useState<number | null>(null)
+  const [touchEnd, setTouchEnd] = useState<number | null>(null)
+
+  const minSwipeDistance = 50
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null)
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
 
   const resetTimer = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current)
@@ -78,12 +92,27 @@ export function BildungsangeboteHero() {
     }
   }, [resetTimer])
 
+  const onTouchEndEvent = () => {
+    if (!touchStart || !touchEnd) return
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > minSwipeDistance
+    const isRightSwipe = distance < -minSwipeDistance
+    if (isLeftSwipe) {
+      next()
+    } else if (isRightSwipe) {
+      prev()
+    }
+  }
+
   return (
     <section
-      className="relative w-full overflow-hidden bg-[#e8f0f5]"
-      style={{ aspectRatio: "16 / 9", maxHeight: "500px" }}
+      className="relative w-full overflow-hidden bg-[#e8f0f5] aspect-[4/3] sm:aspect-video md:aspect-[16/9]"
+      style={{ maxHeight: "500px" }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEndEvent}
     >
       {/* Slides */}
       {slides.map((slide, i) => (

@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Facebook, Instagram, Youtube, Menu, X, ChevronDown } from "lucide-react"
+import { useLanguage } from "@/components/language-provider"
 
 const navItems = [
   { label: "MITMACHEN", href: "/mitmachen" },
@@ -22,6 +23,7 @@ const navItems = [
 ]
 
 export function Header() {
+  const { language, setLanguage } = useLanguage()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false)
@@ -82,14 +84,22 @@ export function Header() {
       }`}
     >
       {/* Top Bar */}
-      <div className="flex items-center justify-between px-4 py-2 border-b border-gray-100">
+      <div className="flex items-center justify-between px-4 py-1.5 md:py-2 border-b border-gray-100">
         {/* Language Flags */}
         <div className="flex items-center gap-3">
-          <button className="text-lg hover:opacity-75 transition-opacity" title="Deutsch">
+          <button 
+            onClick={() => setLanguage("de")}
+            className={`text-lg transition-opacity ${language === 'de' ? 'opacity-100' : 'opacity-40 hover:opacity-75'}`} 
+            title="Deutsch"
+          >
             🇩🇪
           </button>
           <span className="text-gray-300">|</span>
-          <button className="text-lg hover:opacity-75 transition-opacity" title="English">
+          <button 
+            onClick={() => setLanguage("en")}
+            className={`text-lg transition-opacity ${language === 'en' ? 'opacity-100' : 'opacity-40 hover:opacity-75'}`} 
+            title="English"
+          >
             🇺🇸
           </button>
         </div>
@@ -116,8 +126,8 @@ export function Header() {
       </div>
 
       {/* Logo Section */}
-      <div className="flex justify-center py-4">
-        <Link href="/" className="relative w-72 h-20">
+      <div className="flex justify-center py-3 md:py-4">
+        <Link href="/" className="relative w-56 h-16 md:w-72 md:h-20">
           <Image
             src="/youthbridge-navbar-logo.png"
             alt="YouthBridge München Logo"
@@ -174,7 +184,7 @@ export function Header() {
         </ul>
 
         {/* Mobile Menu Button */}
-        <div className="lg:hidden flex justify-center py-4">
+        <div className="lg:hidden flex justify-center pb-3">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="text-gray-700 p-2"

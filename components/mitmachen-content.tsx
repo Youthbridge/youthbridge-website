@@ -51,6 +51,32 @@ const programs = [
 function MitmachenSlideshow({ images, className = "" }: { images: string[], className?: string }) {
   const [currentIndex, setCurrentIndex] = useState(0)
 
+  const [touchStart, setTouchStart] = useState<number | null>(null)
+  const [touchEnd, setTouchEnd] = useState<number | null>(null)
+
+  const minSwipeDistance = 50
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null)
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const onTouchEndEvent = () => {
+    if (!touchStart || !touchEnd) return
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > minSwipeDistance
+    const isRightSwipe = distance < -minSwipeDistance
+    if (isLeftSwipe) {
+      setCurrentIndex((prev) => (prev + 1) % images.length)
+    } else if (isRightSwipe) {
+      setCurrentIndex((prev) => (prev - 1 + images.length) % images.length)
+    }
+  }
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length)
@@ -59,7 +85,12 @@ function MitmachenSlideshow({ images, className = "" }: { images: string[], clas
   }, [images.length])
 
   return (
-    <div className={`relative w-full max-w-xl aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border border-[#d6eaf8] ${className}`}>
+    <div 
+      className={`relative w-full max-w-xl aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border border-[#d6eaf8] ${className}`}
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEndEvent}
+    >
       {images.map((src, i) => (
         <Image
           key={src}
@@ -216,10 +247,10 @@ export function MitmachenContent() {
                   "/yb-fun-2.jpg",
                   "/yb-fun-1.jpg",
                 ]} 
-                className="lg:ml-auto" 
+                className="lg:ml-auto order-2 lg:order-1" 
               />
 
-              <div ref={formContainerRef} className="min-h-[800px] md:min-h-[700px] w-full flex flex-col justify-start">
+              <div ref={formContainerRef} className="min-h-[800px] md:min-h-[700px] w-full flex flex-col justify-start order-1 lg:order-2">
                 {submitted ? (
                   <SuccessMessage />
                 ) : (

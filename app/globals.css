@@ -123,3 +123,22 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Hide Google Translate UI */
+.goog-te-banner-frame {
+  display: none !important;
+}
+body {
+  top: 0 !important;
+  position: static !important;
+}
+.goog-te-gadget {
+  display: none !important;
+}
+#goog-gt-tt {
+  display: none !important;
+}
+.goog-text-highlight {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
