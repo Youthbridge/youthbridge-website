@@ -127,19 +127,14 @@ export function Header() {
 
       {/* Logo Section */}
       <div className="flex justify-center py-3 md:py-4">
-        <Link href="/" className="flex items-center gap-3">
-          <div className="relative w-12 h-12 md:w-16 md:h-16">
-            <Image
-              src="/icon-32x32.png"
-              alt="YouthBridge Logo Icon"
-              fill
-              className="object-contain"
-              priority
-            />
-          </div>
-          <span className="text-2xl md:text-3xl font-bold text-[#1a5276] tracking-tight" style={{ fontFamily: "var(--font-oswald), sans-serif" }}>
-            YouthBridge
-          </span>
+        <Link href="/" className="relative w-56 h-16 md:w-72 md:h-20">
+          <Image
+            src="/youthbridge-horizontal-logo.png"
+            alt="YouthBridge Logo"
+            fill
+            className="object-contain"
+            priority
+          />
         </Link>
       </div>
 
