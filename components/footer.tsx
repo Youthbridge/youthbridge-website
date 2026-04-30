@@ -3,6 +3,8 @@ import Link from "next/link"
 import { Facebook, Instagram, Youtube } from "lucide-react"
 
 export function Footer() {
+  const currentYear = new Date().getFullYear()
+
   return (
     <footer className="bg-[#e8e8e8] py-12">
       <div className="max-w-4xl mx-auto px-6 flex flex-col items-center gap-6 text-center">
@@ -24,7 +26,7 @@ export function Footer() {
 
         {/* Copyright + Links */}
         <p className="text-sm font-semibold text-[#1a3a8f]">
-          Copyright &copy; EJKA e.V. 2018&nbsp;|&nbsp;
+          Copyright &copy; EJKA e.V. {currentYear}&nbsp;|&nbsp;
           <Link href="/datenschutz" className="hover:underline">
             Datenschutzerklärung
           </Link>
@@ -37,7 +39,7 @@ export function Footer() {
         {/* Social Media Icons */}
         <div className="flex items-center gap-6">
           <Link
-            href="https://facebook.com"
+            href="https://www.facebook.com/youthbridgemuenchen"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook"
@@ -46,7 +48,7 @@ export function Footer() {
             <Facebook size={24} />
           </Link>
           <Link
-            href="https://instagram.com"
+            href="https://www.instagram.com/youthbridge_/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
@@ -55,7 +57,7 @@ export function Footer() {
             <Instagram size={24} />
           </Link>
           <Link
-            href="https://youtube.com"
+            href="https://www.youtube.com/@youthbridgemuenchen"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="YouTube"

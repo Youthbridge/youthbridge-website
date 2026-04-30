@@ -1,16 +1,13 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono, Oswald } from 'next/font/google'
+import { Oswald } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
 const oswald = Oswald({ subsets: ["latin"], variable: "--font-oswald", weight: ["400", "600", "700"] });
 
 export const metadata: Metadata = {
   title: 'YouthBridge München',
   description: 'YouthBridge – Das Erfolgskonzept aus NYC in Bayern. Seit 2017 in München.',
-  generator: 'v0.app',
   icons: {
     icon: [
       {

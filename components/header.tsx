@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Facebook, Instagram, Youtube, Menu, X, ChevronDown } from "lucide-react"
@@ -25,9 +25,32 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  // Track scroll for sticky header styling
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10)
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
+
+  // Close mobile menu on route change (resize as proxy)
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth >= 1024) setMobileMenuOpen(false)
+    }
+    window.addEventListener("resize", onResize, { passive: true })
+    return () => window.removeEventListener("resize", onResize)
+  }, [])
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? "hidden" : ""
+    return () => { document.body.style.overflow = "" }
+  }, [mobileMenuOpen])
 
   return (
-    <header className="w-full bg-white">
+    <header className={`w-full bg-white sticky top-0 z-50 transition-shadow duration-300 ${scrolled ? "shadow-md" : ""}`}>
       {/* Top Bar */}
       <div className="flex items-center justify-between px-4 py-2 border-b border-gray-100">
         {/* Language Flags */}
@@ -43,17 +66,20 @@ export function Header() {
 
         {/* Social Icons */}
         <div className="flex items-center gap-2">
-          <Link href="#" className="w-9 h-9 bg-[#3b5998] text-white flex items-center justify-center rounded">
+          <Link href="https://www.facebook.com/youthbridgemuenchen" target="_blank" rel="noopener noreferrer" className="w-9 h-9 bg-[#3b5998] text-white flex items-center justify-center rounded" aria-label="Facebook">
             <Facebook size={18} />
           </Link>
           <Link
-            href="#"
+            href="https://www.instagram.com/youthbridge_/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-9 h-9 text-white flex items-center justify-center rounded"
             style={{ background: "linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)" }}
+            aria-label="Instagram"
           >
             <Instagram size={18} />
           </Link>
-          <Link href="#" className="w-9 h-9 bg-[#ff0000] text-white flex items-center justify-center rounded">
+          <Link href="https://www.youtube.com/@youthbridgemuenchen" target="_blank" rel="noopener noreferrer" className="w-9 h-9 bg-[#ff0000] text-white flex items-center justify-center rounded" aria-label="YouTube">
             <Youtube size={18} />
           </Link>
         </div>
@@ -84,11 +110,15 @@ export function Header() {
                   onMouseEnter={() => setDropdownOpen(true)}
                   onMouseLeave={() => setDropdownOpen(false)}
                 >
-                  <button className="text-sm font-semibold tracking-wide text-gray-700 hover:text-[#1a5276] transition-colors">
+                  <Link
+                    href={item.href}
+                    className="flex items-center gap-1 text-sm font-semibold tracking-wide text-gray-700 hover:text-[#1a5276] transition-colors"
+                  >
                     {item.label}
-                  </button>
+                    <ChevronDown size={14} className={`transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""}`} />
+                  </Link>
                   {dropdownOpen && (
-                    <div className="absolute top-full left-0 w-48 bg-white border border-gray-100 rounded shadow-lg z-50">
+                    <div className="absolute top-full left-0 w-48 bg-white border border-gray-100 rounded shadow-lg z-50 py-1">
                       {item.dropdown.map((sub) => (
                         <Link
                           key={sub.href}
@@ -115,14 +145,23 @@ export function Header() {
 
         {/* Mobile Menu Button */}
         <div className="lg:hidden flex justify-center py-4">
-          <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-gray-700 p-2">
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="text-gray-700 p-2"
+            aria-label={mobileMenuOpen ? "Menü schließen" : "Menü öffnen"}
+            aria-expanded={mobileMenuOpen}
+          >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <ul className="lg:hidden flex flex-col items-center gap-4 py-4 bg-white">
+        <div
+          className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+            mobileMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <ul className="flex flex-col items-center gap-4 py-4 bg-white">
             {navItems.map((item) => (
               <li key={item.label} className="text-center">
                 {item.dropdown ? (
@@ -134,8 +173,12 @@ export function Header() {
                       {item.label}
                       <ChevronDown size={14} className={`transition-transform duration-200 ${mobileDropdownOpen ? "rotate-180" : ""}`} />
                     </button>
-                    {mobileDropdownOpen && (
-                      <div className="mt-2 flex flex-col gap-2">
+                    <div
+                      className={`overflow-hidden transition-all duration-200 ease-in-out ${
+                        mobileDropdownOpen ? "max-h-32 opacity-100 mt-2" : "max-h-0 opacity-0"
+                      }`}
+                    >
+                      <div className="flex flex-col gap-2">
                         {item.dropdown.map((sub) => (
                           <Link
                             key={sub.href}
@@ -147,7 +190,7 @@ export function Header() {
                           </Link>
                         ))}
                       </div>
-                    )}
+                    </div>
                   </div>
                 ) : (
                   <Link
@@ -161,7 +204,7 @@ export function Header() {
               </li>
             ))}
           </ul>
-        )}
+        </div>
       </nav>
     </header>
   )

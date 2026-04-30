@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { ImageIcon, Mail } from "lucide-react"
 import Image from "next/image"
 import { BildungsangeboteHero } from "./bildungsangebote-hero"
 import { MetricsSection } from "./metrics-section"
@@ -75,10 +74,10 @@ function WorkshopRow({
             className="object-contain"
           />
         ) : (
-          <>
-            <ImageIcon size={48} strokeWidth={1} />
-            <span className="text-xs mt-2 text-[#5d6d7e]">Bild-Platzhalter</span>
-          </>
+          <div className="flex flex-col items-center gap-2">
+            <div className="w-12 h-12 rounded-lg border-2 border-dashed border-[#85c1e9] flex items-center justify-center text-[#85c1e9] text-lg">📷</div>
+            <span className="text-xs text-[#5d6d7e]">Bild-Platzhalter</span>
+          </div>
         )}
       </div>
     </div>

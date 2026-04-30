@@ -159,7 +159,6 @@ function ChapterCard({
 
 /* ─── Main component ─── */
 export function GeschichteContent() {
-  const heroRef = useRef<HTMLDivElement>(null)
   const [heroVisible, setHeroVisible] = useState(false)
 
   useEffect(() => {
@@ -177,7 +176,6 @@ export function GeschichteContent() {
         <div className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-white/5" />
 
         <div
-          ref={heroRef}
           className={`relative z-10 max-w-4xl mx-auto px-6 text-center transition-all duration-1000 ease-out ${
             heroVisible
               ? "opacity-100 translate-y-0"

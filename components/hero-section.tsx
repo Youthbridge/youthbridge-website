@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useCallback, useRef } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
 const slides = [
@@ -40,6 +40,19 @@ const AUTO_ADVANCE_MS = 5000
 export function HeroSection() {
   const [current, setCurrent] = useState(0)
   const [animating, setAnimating] = useState(false)
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const [paused, setPaused] = useState(false)
+
+  const resetTimer = useCallback(() => {
+    if (timerRef.current) clearInterval(timerRef.current)
+    if (!paused) {
+      timerRef.current = setInterval(() => {
+        setAnimating(true)
+        setCurrent((c) => (c + 1) % slides.length)
+        setTimeout(() => setAnimating(false), 700)
+      }, AUTO_ADVANCE_MS)
+    }
+  }, [paused])
 
   const goTo = useCallback(
     (index: number) => {
@@ -47,8 +60,9 @@ export function HeroSection() {
       setAnimating(true)
       setCurrent(index)
       setTimeout(() => setAnimating(false), 700)
+      resetTimer()
     },
-    [animating]
+    [animating, resetTimer]
   )
 
   const prev = useCallback(() => {
@@ -59,16 +73,21 @@ export function HeroSection() {
     goTo((current + 1) % slides.length)
   }, [current, goTo])
 
-  // Auto-advance
+  // Auto-advance with proper cleanup
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent((c) => (c + 1) % slides.length)
-    }, AUTO_ADVANCE_MS)
-    return () => clearInterval(timer)
-  }, [])
+    resetTimer()
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current)
+    }
+  }, [resetTimer])
 
   return (
-    <section className="relative w-full overflow-hidden" style={{ aspectRatio: "16 / 9" }}>
+    <section
+      className="relative w-full overflow-hidden"
+      style={{ aspectRatio: "16 / 9" }}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
 
       {/* Slides */}
       {slides.map((slide, i) => (
@@ -84,6 +103,7 @@ export function HeroSection() {
             fill
             className="object-cover object-center"
             priority={i === 0}
+            loading={i === 0 ? "eager" : "lazy"}
           />
 
           {/* Overlay */}

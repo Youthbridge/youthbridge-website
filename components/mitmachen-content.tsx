@@ -90,6 +90,7 @@ function MitmachenSlideshow({ images, className = "" }: { images: string[], clas
 
 export function MitmachenContent() {
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState({
     vorname: "",
     nachname: "",
@@ -118,6 +119,8 @@ export function MitmachenContent() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (loading) return
+    setLoading(true)
     
     try {
       const response = await fetch('/api/contact', {
@@ -140,6 +143,8 @@ export function MitmachenContent() {
     } catch (error) {
       console.error("Error submitting form:", error);
       alert("Es gab einen Fehler beim Senden der Nachricht. Bitte versuche es später noch einmal.");
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -222,6 +227,7 @@ export function MitmachenContent() {
                     formData={formData}
                     onChange={handleChange}
                     onSubmit={handleSubmit}
+                    loading={loading}
                   />
                 )}
               </div>
@@ -238,6 +244,7 @@ function RegistrationForm({
   formData,
   onChange,
   onSubmit,
+  loading,
 }: {
   formData: Record<string, string | boolean>
   onChange: (
@@ -246,6 +253,7 @@ function RegistrationForm({
     >
   ) => void
   onSubmit: (e: React.FormEvent) => void
+  loading: boolean
 }) {
   const formRef = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
@@ -431,10 +439,27 @@ function RegistrationForm({
         {/* Submit */}
         <button
           type="submit"
-          className="w-full py-4 px-6 bg-[#1a5276] hover:bg-[#154360] text-white font-bold rounded-full flex items-center justify-center gap-3 transition-colors text-sm tracking-wide shadow-lg hover:shadow-xl active:scale-[0.95]"
+          disabled={loading}
+          className={`w-full py-4 px-6 text-white font-bold rounded-full flex items-center justify-center gap-3 transition-all text-sm tracking-wide shadow-lg active:scale-[0.95] ${
+            loading
+              ? "bg-[#5d6d7e] cursor-not-allowed"
+              : "bg-[#1a5276] hover:bg-[#154360] hover:shadow-xl"
+          }`}
         >
-          <Send size={18} />
-          Anmeldung absenden
+          {loading ? (
+            <>
+              <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+              </svg>
+              Wird gesendet…
+            </>
+          ) : (
+            <>
+              <Send size={18} />
+              Anmeldung absenden
+            </>
+          )}
         </button>
       </form>
     </div>

@@ -1,8 +1,8 @@
 "use client"
 
 import Image from "next/image"
-import { useState, useEffect, useCallback } from "react"
-import { ChevronLeft, ChevronRight, ImageIcon } from "lucide-react"
+import { useState, useEffect, useCallback, useRef } from "react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 
 const slides = [
   {
@@ -37,6 +37,19 @@ const AUTO_ADVANCE_MS = 5000
 export function BildungsangeboteHero() {
   const [current, setCurrent] = useState(0)
   const [animating, setAnimating] = useState(false)
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const [paused, setPaused] = useState(false)
+
+  const resetTimer = useCallback(() => {
+    if (timerRef.current) clearInterval(timerRef.current)
+    if (!paused) {
+      timerRef.current = setInterval(() => {
+        setAnimating(true)
+        setCurrent((c) => (c + 1) % slides.length)
+        setTimeout(() => setAnimating(false), 700)
+      }, AUTO_ADVANCE_MS)
+    }
+  }, [paused])
 
   const goTo = useCallback(
     (index: number) => {
@@ -44,8 +57,9 @@ export function BildungsangeboteHero() {
       setAnimating(true)
       setCurrent(index)
       setTimeout(() => setAnimating(false), 700)
+      resetTimer()
     },
-    [animating]
+    [animating, resetTimer]
   )
 
   const prev = useCallback(() => {
@@ -56,16 +70,21 @@ export function BildungsangeboteHero() {
     goTo((current + 1) % slides.length)
   }, [current, goTo])
 
-  // Auto-advance
+  // Auto-advance with proper cleanup
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent((c) => (c + 1) % slides.length)
-    }, AUTO_ADVANCE_MS)
-    return () => clearInterval(timer)
-  }, [])
+    resetTimer()
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current)
+    }
+  }, [resetTimer])
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#e8f0f5]" style={{ aspectRatio: "16 / 9", maxHeight: "500px" }}>
+    <section
+      className="relative w-full overflow-hidden bg-[#e8f0f5]"
+      style={{ aspectRatio: "16 / 9", maxHeight: "500px" }}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
       {/* Slides */}
       {slides.map((slide, i) => (
         <div
@@ -74,27 +93,17 @@ export function BildungsangeboteHero() {
           style={{ opacity: i === current ? 1 : 0, zIndex: i === current ? 1 : 0 }}
           aria-hidden={i !== current}
         >
-          {slide.src ? (
-            <Image
-              src={slide.src}
-              alt={slide.alt}
-              fill
-              className="object-cover object-center"
-              priority={i === 0}
-            />
-          ) : (
-            <div className="flex flex-col items-center gap-3">
-              <ImageIcon size={64} strokeWidth={1} />
-              <span className="text-sm font-medium text-[#5d6d7e]">
-                Bild-Platzhalter {i + 1} – wird später ersetzt
-              </span>
-            </div>
-          )}
+          <Image
+            src={slide.src}
+            alt={slide.alt}
+            fill
+            className="object-cover object-center"
+            priority={i === 0}
+            loading={i === 0 ? "eager" : "lazy"}
+          />
 
           {/* Overlay to ensure arrows and dots are visible over images */}
-          {slide.src && (
-             <div className="absolute inset-0 bg-black/10" />
-          )}
+          <div className="absolute inset-0 bg-black/10" />
         </div>
       ))}
 
