@@ -114,11 +114,27 @@ export function MitmachenContent() {
     setFormData((prev) => ({ ...prev, [target.name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // TODO: hook up SMTP / API endpoint here
-    console.log("Form submitted:", formData)
-    setSubmitted(true)
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      setSubmitted(true);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Es gab einen Fehler beim Senden der Nachricht. Bitte versuche es später noch einmal.");
+    }
   }
 
   return (
