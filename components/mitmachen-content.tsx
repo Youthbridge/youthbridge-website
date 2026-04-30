@@ -114,6 +114,8 @@ export function MitmachenContent() {
     setFormData((prev) => ({ ...prev, [target.name]: value }))
   }
 
+  const formContainerRef = useRef<HTMLDivElement>(null)
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
@@ -131,6 +133,10 @@ export function MitmachenContent() {
       }
 
       setSubmitted(true);
+      // Scroll to the top of the form container smoothly
+      setTimeout(() => {
+        formContainerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
     } catch (error) {
       console.error("Error submitting form:", error);
       alert("Es gab einen Fehler beim Senden der Nachricht. Bitte versuche es später noch einmal.");
@@ -208,15 +214,17 @@ export function MitmachenContent() {
                 className="lg:ml-auto" 
               />
 
-              {submitted ? (
-                <SuccessMessage />
-              ) : (
-                <RegistrationForm
-                  formData={formData}
-                  onChange={handleChange}
-                  onSubmit={handleSubmit}
-                />
-              )}
+              <div ref={formContainerRef} className="min-h-[800px] md:min-h-[700px] w-full flex flex-col justify-start">
+                {submitted ? (
+                  <SuccessMessage />
+                ) : (
+                  <RegistrationForm
+                    formData={formData}
+                    onChange={handleChange}
+                    onSubmit={handleSubmit}
+                  />
+                )}
+              </div>
             </div>
           </div>
         </div>

@@ -12,15 +12,17 @@ export async function POST(request: Request) {
     const result = await resend.emails.send({
       from: 'onboarding@resend.dev', // Ensure this matches your verified domain later
       to: 'youthbridge@ejka.org',
-      subject: `New Contact Form Submission from ${data.firstName || 'Website'}`,
+      subject: `New Contact Form Submission from ${data.vorname || 'Website'}`,
       html: `
         <h2>New Message Details:</h2>
-        <p><strong>First Name:</strong> ${data.firstName || 'N/A'}</p>
-        <p><strong>Last Name:</strong> ${data.lastName || 'N/A'}</p>
+        <p><strong>Vorname:</strong> ${data.vorname || 'N/A'}</p>
+        <p><strong>Nachname:</strong> ${data.nachname || 'N/A'}</p>
         <p><strong>Email:</strong> ${data.email || 'N/A'}</p>
-        <p><strong>Phone:</strong> ${data.phone || 'N/A'}</p>
-        <p><strong>Message:</strong></p>
-        <p>${data.message || 'N/A'}</p>
+        <p><strong>Telefon:</strong> ${data.telefon || 'N/A'}</p>
+        <p><strong>Geburtsdatum:</strong> ${data.geburtsdatum || 'N/A'}</p>
+        <p><strong>Programm:</strong> ${data.programm || 'N/A'}</p>
+        <p><strong>Nachricht:</strong></p>
+        <p>${data.nachricht || 'N/A'}</p>
       `
     });
 
