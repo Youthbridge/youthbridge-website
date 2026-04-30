@@ -39,7 +39,7 @@ export function Footer() {
         {/* Social Media Icons */}
         <div className="flex items-center gap-6">
           <Link
-            href="https://www.facebook.com/youthbridgemuenchen"
+            href="https://www.facebook.com/youthbridgemunich/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook"
@@ -57,7 +57,7 @@ export function Footer() {
             <Instagram size={24} />
           </Link>
           <Link
-            href="https://www.youtube.com/@youthbridgemuenchen"
+            href="https://www.youtube.com/channel/UCN48PDJPgy4Q47pB8CsBwAg"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="YouTube"

@@ -9,24 +9,29 @@ const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono"
 const oswald = Oswald({ subsets: ["latin"], variable: "--font-oswald", weight: ["400", "600", "700"] });
 
 export const metadata: Metadata = {
-  title: 'YouthBridge München',
+  title: 'YouthBridge',
   description: 'YouthBridge – Das Erfolgskonzept aus NYC in Bayern. Seit 2017 in München.',
   icons: {
-    icon: [
+    icon: '/icon-32x32.png',
+    apple: '/apple-touch-icon.png',
+  },
+  openGraph: {
+    title: 'YouthBridge',
+    description: 'YouthBridge – Das Erfolgskonzept aus NYC in Bayern. Seit 2017 in München.',
+    images: [
       {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
+        url: '/hero-bg.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'YouthBridge Team',
       },
     ],
-    apple: '/apple-icon.png',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'YouthBridge',
+    description: 'YouthBridge – Das Erfolgskonzept aus NYC in Bayern. Seit 2017 in München.',
+    images: ['/hero-bg.jpg'],
   },
 }
 

@@ -106,7 +106,7 @@ export function Header() {
 
         {/* Social Icons */}
         <div className="flex items-center gap-2">
-          <Link href="https://www.facebook.com/youthbridgemuenchen" target="_blank" rel="noopener noreferrer" className="w-9 h-9 bg-[#3b5998] text-white flex items-center justify-center rounded" aria-label="Facebook">
+          <Link href="https://www.facebook.com/youthbridgemunich/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 bg-[#3b5998] text-white flex items-center justify-center rounded" aria-label="Facebook">
             <Facebook size={18} />
           </Link>
           <Link
@@ -119,7 +119,7 @@ export function Header() {
           >
             <Instagram size={18} />
           </Link>
-          <Link href="https://www.youtube.com/@youthbridgemuenchen" target="_blank" rel="noopener noreferrer" className="w-9 h-9 bg-[#ff0000] text-white flex items-center justify-center rounded" aria-label="YouTube">
+          <Link href="https://www.youtube.com/channel/UCN48PDJPgy4Q47pB8CsBwAg" target="_blank" rel="noopener noreferrer" className="w-9 h-9 bg-[#ff0000] text-white flex items-center justify-center rounded" aria-label="YouTube">
             <Youtube size={18} />
           </Link>
         </div>
@@ -127,14 +127,19 @@ export function Header() {
 
       {/* Logo Section */}
       <div className="flex justify-center py-3 md:py-4">
-        <Link href="/" className="relative w-56 h-16 md:w-72 md:h-20">
-          <Image
-            src="/youthbridge-navbar-logo.png"
-            alt="YouthBridge München Logo"
-            fill
-            className="object-contain"
-            priority
-          />
+        <Link href="/" className="flex items-center gap-3">
+          <div className="relative w-12 h-12 md:w-16 md:h-16">
+            <Image
+              src="/icon-32x32.png"
+              alt="YouthBridge Logo Icon"
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
+          <span className="text-2xl md:text-3xl font-bold text-[#1a5276] tracking-tight" style={{ fontFamily: "var(--font-oswald), sans-serif" }}>
+            YouthBridge
+          </span>
         </Link>
       </div>
 
