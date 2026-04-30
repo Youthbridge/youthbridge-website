@@ -28,10 +28,10 @@ const slides = [
   },
   {
     id: 3,
-    src: "/hero-bg.jpg",
-    alt: "YouthBridge Slide 4",
-    title: "Slide 4 – Titel kommt noch",
-    subtitle: "Untertitel kommt noch",
+    src: "/hero-brooklyn.jpg",
+    alt: "YouthBridge in New York City",
+    title: "YouthBridge in New York City",
+    subtitle: "Das Original auf der Brooklyn Bridge",
   },
 ]
 

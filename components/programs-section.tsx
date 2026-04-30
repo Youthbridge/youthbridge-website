@@ -1,5 +1,6 @@
 import { ExternalLink, Flag, GraduationCap, CheckCircle2 } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 const programs = [
   {
@@ -15,6 +16,7 @@ const programs = [
     ],
     buttonText: "MACH MIT!",
     buttonIcon: ExternalLink,
+    href: "/mitmachen",
   },
   {
     id: "bayern",
@@ -28,6 +30,7 @@ const programs = [
     ],
     buttonText: "ERFAHRE MEHR!",
     buttonIcon: Flag,
+    href: "/projektarbeit",
   },
   {
     id: "uni",
@@ -41,6 +44,7 @@ const programs = [
     ],
     buttonText: "BUCHE UNS!",
     buttonIcon: GraduationCap,
+    href: "/bildungsangebote",
   },
 ]
 
@@ -106,10 +110,13 @@ export function ProgramsSection() {
               </ul>
 
               {/* Button – always at bottom */}
-              <button className="w-full py-4 px-6 bg-[#85c1e9] hover:bg-[#5dade2] text-[#1a5276] font-bold rounded-full flex items-center justify-center gap-3 transition-colors text-sm tracking-wide mt-auto">
+              <Link
+                href={program.href}
+                className="w-full py-4 px-6 bg-[#85c1e9] hover:bg-[#5dade2] text-[#1a5276] font-bold rounded-full flex items-center justify-center gap-3 transition-colors text-sm tracking-wide mt-auto"
+              >
                 <program.buttonIcon size={18} />
                 {program.buttonText}
-              </button>
+              </Link>
             </div>
           ))}
         </div>
