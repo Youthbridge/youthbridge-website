@@ -20,7 +20,7 @@ function AnimatedCounter({ end, duration = 2000, suffix = "" }: CounterProps) {
           setHasStarted(true)
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.1 }
     )
 
     if (countRef.current) {
@@ -45,7 +45,7 @@ function AnimatedCounter({ end, duration = 2000, suffix = "" }: CounterProps) {
     window.requestAnimationFrame(step)
   }, [hasStarted, end, duration])
 
-  return <span ref={countRef}>{count}{suffix}</span>
+  return <span ref={countRef} className="notranslate">{count}{suffix && <span className="notranslate">{suffix}</span>}</span>
 }
 
 export function MetricsSection() {
@@ -85,7 +85,7 @@ export function MetricsSection() {
               className="text-3xl md:text-4xl font-black text-[#1a5276] min-h-[3.5rem] flex items-center justify-center leading-tight" 
               style={{ fontFamily: "var(--font-oswald), sans-serif" }}
             >
-              Peer-to-Peer
+              <span className="notranslate">Peer-to-Peer</span>
             </div>
             <p className="text-[#5d6d7e] text-xs md:text-sm font-bold tracking-widest uppercase">
               von Jugendlichen für Jugendliche
