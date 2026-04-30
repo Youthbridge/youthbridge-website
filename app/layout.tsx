@@ -9,6 +9,7 @@ const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono"
 const oswald = Oswald({ subsets: ["latin"], variable: "--font-oswald", weight: ["400", "600", "700"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://youthbridge-website.vercel.app'),
   title: 'YouthBridge',
   description: 'YouthBridge – Das Erfolgskonzept aus NYC in Bayern. Seit 2017 in München.',
   icons: {
@@ -23,13 +24,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'YouthBridge',
     description: 'YouthBridge – Das Erfolgskonzept aus NYC in Bayern. Seit 2017 in München.',
-    url: 'https://www.youthbridge.eu',
     siteName: 'YouthBridge',
     locale: 'de_DE',
     type: 'website',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/sharing-preview.jpg',
         width: 1200,
         height: 630,
         alt: 'YouthBridge Team',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'YouthBridge',
     description: 'YouthBridge – Das Erfolgskonzept aus NYC in Bayern. Seit 2017 in München.',
-    images: ['/og-image.jpg'],
+    images: ['/sharing-preview.jpg'],
   },
 }
 
