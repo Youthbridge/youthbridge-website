@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
-import { Oswald } from 'next/font/google'
+import { Geist, Geist_Mono, Oswald } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
+const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" });
 const oswald = Oswald({ subsets: ["latin"], variable: "--font-oswald", weight: ["400", "600", "700"] });
 
 export const metadata: Metadata = {
@@ -34,7 +36,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de">
-      <body className={`font-sans antialiased ${oswald.variable}`}>
+      <body className={`font-sans antialiased ${geist.variable} ${geistMono.variable} ${oswald.variable}`}>
         {children}
         <Analytics />
       </body>

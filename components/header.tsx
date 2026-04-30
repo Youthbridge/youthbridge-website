@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Facebook, Instagram, Youtube, Menu, X, ChevronDown } from "lucide-react"
@@ -25,16 +25,40 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false)
+  const [headerVisible, setHeaderVisible] = useState(true)
   const [scrolled, setScrolled] = useState(false)
+  const lastScrollY = useRef(0)
 
-  // Track scroll for sticky header styling
+  // Auto-hide on scroll down, show on scroll up
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10)
+    const onScroll = () => {
+      const currentY = window.scrollY
+      setScrolled(currentY > 10)
+
+      // Don't hide when mobile menu is open
+      if (mobileMenuOpen) {
+        lastScrollY.current = currentY
+        return
+      }
+
+      if (currentY < 10) {
+        // Always show when near top
+        setHeaderVisible(true)
+      } else if (currentY > lastScrollY.current + 5) {
+        // Scrolling down → hide
+        setHeaderVisible(false)
+      } else if (currentY < lastScrollY.current - 5) {
+        // Scrolling up → show
+        setHeaderVisible(true)
+      }
+
+      lastScrollY.current = currentY
+    }
     window.addEventListener("scroll", onScroll, { passive: true })
     return () => window.removeEventListener("scroll", onScroll)
-  }, [])
+  }, [mobileMenuOpen])
 
-  // Close mobile menu on route change (resize as proxy)
+  // Close mobile menu on resize to desktop
   useEffect(() => {
     const onResize = () => {
       if (window.innerWidth >= 1024) setMobileMenuOpen(false)
@@ -50,7 +74,13 @@ export function Header() {
   }, [mobileMenuOpen])
 
   return (
-    <header className={`w-full bg-white sticky top-0 z-50 transition-shadow duration-300 ${scrolled ? "shadow-md" : ""}`}>
+    <header
+      className={`w-full bg-white sticky top-0 z-50 transition-all duration-300 ${
+        scrolled ? "shadow-md" : ""
+      } ${
+        headerVisible ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       {/* Top Bar */}
       <div className="flex items-center justify-between px-4 py-2 border-b border-gray-100">
         {/* Language Flags */}
@@ -101,7 +131,7 @@ export function Header() {
       {/* Navigation */}
       <nav className="border-b-4 border-[#1a5276]">
         {/* Desktop Navigation */}
-        <ul className="hidden lg:flex justify-center gap-8 py-4">
+        <ul className="hidden lg:flex justify-center items-center gap-8 py-4">
           {navItems.map((item) => (
             <li key={item.label} className="relative">
               {item.dropdown ? (
@@ -112,9 +142,9 @@ export function Header() {
                 >
                   <Link
                     href={item.href}
-                    className="flex items-center gap-1 text-sm font-semibold tracking-wide text-gray-700 hover:text-[#1a5276] transition-colors"
+                    className="inline-flex items-center gap-1 text-sm font-semibold tracking-wide text-gray-700 hover:text-[#1a5276] transition-colors leading-none"
                   >
-                    {item.label}
+                    <span>{item.label}</span>
                     <ChevronDown size={14} className={`transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""}`} />
                   </Link>
                   {dropdownOpen && (
@@ -134,7 +164,7 @@ export function Header() {
               ) : (
                 <Link
                   href={item.href}
-                  className="text-sm font-semibold tracking-wide text-gray-700 hover:text-[#1a5276] transition-colors"
+                  className="text-sm font-semibold tracking-wide text-gray-700 hover:text-[#1a5276] transition-colors leading-none"
                 >
                   {item.label}
                 </Link>
