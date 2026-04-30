@@ -182,6 +182,8 @@ export function BildungsangeboteContent() {
             index={2}
             title="Bot or not? – KI & Medienkompetenz"
             text="Die Technologie der Künstlichen Intelligenz fasziniert aktuell Menschen auf der ganzen Welt: Wird sie das Ende der Menschheit bedeuten oder ein Segen sein, um lästige Aufgaben zu erledigen? Worauf sich jedoch alle einigen können, wäre dass wir lernen müssen mit ihr verantwortungvoll umzugehen. Darum bearbeiten wir gemeinsam folgende Fragen: Wie funktioniert KI, welche Chancen bietet sie und welche Gefahren stecken dahinter? Wir testen spielerisch, wie man KI-Inhalte von echten unterscheiden kann und üben wie man die Präzision der KI verbessern kann, etwa beim Erstellen von Bildern und Texten. Interaktive Übungen vermitteln praxisnah die Grenzen dieser Technologie und stärken die Medienkompetenz der Teilnehmenden."
+            imageSrc="/Bot or not.png"
+            imageAlt="Bot or not Workshop"
           />
           <WorkshopRow
             index={3}
@@ -201,6 +203,8 @@ export function BildungsangeboteContent() {
             index={5}
             title="Lebendige Bilder – Geschichten die bleiben"
             text="Wie kann Erinnerung lebendig bleiben, wenn Zeitzeugen nicht mehr berichten können? In diesem Workshop beschäftigen sich die Teilnehmenden mit kulturellen Artefakten, die im Zusammenhang mit der Shoah entstanden sind, und erfahren die verschiedenen Schicksale der KünstlerInnen, die sie geschaffen haben. So ordnen die Teilnehmenden die Artefakte anhand der Lebensgeschichten den jeweiligen SchöpferInnen zu. Auf diese Weise verbinden wir historische Einblicke mit spielerischem Lernen und fördern ein tieferes Verständnis für die Erinnerungskultur."
+            imageSrc="/Lebendige Bilder.png"
+            imageAlt="Lebendige Bilder Workshop"
           />
         </div>
       </section>
