@@ -244,60 +244,98 @@ export function BildungsangeboteContent() {
       <BookingCTA />
 
       {/* ── Intro text ── */}
-      <section className="w-full py-16 md:py-24 px-4 bg-white">
+      <section className="w-full py-16 md:py-20 px-6 bg-white overflow-hidden">
         <div
-          className={`max-w-3xl mx-auto transition-all duration-700 ease-out ${
+          className={`max-w-6xl mx-auto transition-all duration-1000 ease-out ${
             introVisible
               ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-6"
+              : "opacity-0 translate-y-8"
           }`}
         >
-          <h1
-            className="text-3xl md:text-4xl font-bold text-[#1a5276] mb-8"
-            style={{
-              fontFamily: "var(--font-oswald), sans-serif",
-              letterSpacing: "0.01em",
-            }}
-          >
-            YouthBridge-UNI
-          </h1>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-start">
+            
+            {/* Left Column: Intro Text */}
+            <div className="md:col-span-7 lg:col-span-8 md:border-r md:border-slate-200 md:pr-8 lg:pr-12 space-y-6">
+              <h1
+                className="text-3xl md:text-4xl font-bold text-[#1a5276]"
+                style={{
+                  fontFamily: "var(--font-oswald), sans-serif",
+                  letterSpacing: "0.01em",
+                }}
+              >
+                YouthBridge-UNI
+              </h1>
 
-          <div className="space-y-6 text-[#2c3e50] text-[15px] leading-relaxed">
-            <p>
-              YouthBridge-UNI ist das Ergebnis des siebenjährigen Wirkens unseres
-              Projekts, das in Form von Seminaren, Workshops und Lernspielen
-              junge Menschen in ihrer ganzen Vielfalt zusammenbringt. Die
-              Kenntnisse und Kompetenzen, die wir in all den Jahren zu den
-              wichtigsten gesellschaftspolitischen Themen erlangt haben, wollen
-              wir nun mit anderen Menschen teilen.
-            </p>
+              <div className="space-y-6 text-[#2c3e50] text-[15px] leading-relaxed">
+                <p>
+                  YouthBridge-UNI ist das Ergebnis des siebenjährigen Wirkens unseres
+                  Projekts, das in Form von Seminaren, Workshops und Lernspielen
+                  junge Menschen in ihrer ganzen Vielfalt zusammenbringt. Die
+                  Kenntnisse und Kompetenzen, die wir in all den Jahren zu den
+                  wichtigsten gesellschaftspolitischen Themen erlangt haben, wollen
+                  wir nun mit anderen Menschen teilen.
+                </p>
 
-            <p className="font-semibold text-[#1a5276]">
-              Die wichtigsten Themen der YouthBridge-Uni:
-              Radikalisierungsprävention sowie die Bekämpfung von Antisemitismus
-              und Diskriminierung.
-            </p>
+                <p className="font-semibold text-[#1a5276]">
+                  Die wichtigsten Themen der YouthBridge-Uni:
+                  Radikalisierungsprävention sowie die Bekämpfung von Antisemitismus
+                  und Diskriminierung.
+                </p>
 
-            <p>
-              Kern der YouthBridge-Uni sind unsere Workshops: Zwei bis drei
-              YouBies besuchen mit den Workshops Schulen, Institutionen,
-              Organisationen. Unsere Workshops und Seminare nennen wir YouBienare
-              (Projekt: YouthBridge, Teilnehmer: YouBies, Bildungsprodukt:
-              YouBienar).
-            </p>
+                <p>
+                  Kern der YouthBridge-Uni sind unsere Workshops: Zwei bis drei
+                  YouBies besuchen mit den Workshops Schulen, Institutionen,
+                  Organisationen. Unsere Workshops und Seminare nennen wir YouBienare
+                  (Projekt: YouthBridge, Teilnehmer: YouBies, Bildungsprodukt:
+                  YouBienar).
+                </p>
 
-            <p>
-              Jedes YouBienar dauert 1,5 Stunden und kommt sowohl bei Kindern
-              und Jugendlichen als auch bei Erwachsenen und Senioren sehr gut an.
-              Der Austausch ist interaktiv, lebendig, auf Augenhöhe. Wir sind mit
-              sehr viel Motivation und Engagement dabei. Wir haben die
-              Kartenspiele, die Videos, die Rollenspiele etc. selbst entwickelt.
-            </p>
+                <p>
+                  Jedes YouBienar dauert 1,5 Stunden und kommt sowohl bei Kindern
+                  und Jugendlichen als auch bei Erwachsenen und Senioren sehr gut an.
+                  Der Austausch ist interaktiv, lebendig, auf Augenhöhe. Wir sind mit
+                  sehr viel Motivation und Engagement dabei. Wir haben die
+                  Kartenspiele, die Videos, die Rollenspiele etc. selbst entwickelt.
+                </p>
 
-            <p>
-              Derzeit bieten wir sechs YouBienare an, die wir ständig
-              weiterentwickeln:
-            </p>
+                <p>
+                  Derzeit bieten wir sechs YouBienare an, die wir ständig
+                  weiterentwickeln:
+                </p>
+              </div>
+            </div>
+
+            {/* Mobile Divider */}
+            <div className="block md:hidden w-full border-t border-slate-200 my-4" />
+
+            {/* Right Column: Mini-Section (Praise / Recognition) */}
+            <div className="md:col-span-5 lg:col-span-4 space-y-6">
+              <div className="bg-slate-50/60 rounded-2xl border border-slate-100 p-6 space-y-4 hover:shadow-md transition-all duration-300">
+                <div className="relative w-full aspect-[1.6] rounded-xl overflow-hidden border border-slate-200/50 bg-white shadow-sm">
+                  <Image
+                    src="/demokratisch-handeln.png"
+                    alt="Bundeswettbewerb Demokratisch Handeln - Nominiertes Projekt 2025"
+                    fill
+                    className="object-contain p-2"
+                  />
+                </div>
+                <div className="space-y-3">
+                  <span className="text-[10px] font-bold text-[#1a5276] uppercase tracking-widest block">
+                    Bundesweite Anerkennung
+                  </span>
+                  <h3 className="text-base font-bold text-slate-800 leading-snug">
+                    Nominiert für den Bundeswettbewerb „Demokratisch Handeln“ 2025
+                  </h3>
+                  <p className="text-xs text-[#2c3e50] leading-relaxed">
+                    Die Nominierung der YouthBridge-UNI für diesen renommierten Bundeswettbewerb ist ein eindrucksvoller Beleg für die herausragende Qualität und die hohe gesellschaftliche Relevanz unserer Bildungsarbeit.
+                  </p>
+                  <p className="text-xs text-[#2c3e50] leading-relaxed">
+                    Sie würdigt das außergewöhnliche Engagement unserer YouBies, die in ihren Workshops tagtäglich einen unverzichtbaren Beitrag zur Demokratieförderung und Radikalisierungsprävention auf Augenhöhe leisten – ein Erfolg, der bundesweit Beachtung und Anerkennung findet.
+                  </p>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
