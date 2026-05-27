@@ -128,6 +128,19 @@ Seit 2017 leite ich YouthBridge, das 2021 mit dem Integrationspreis der Bayerisc
             imageSrc="/team-olga.jpg"
             imageAlt="Olga, Projektleiterin YouthBridge München"
           />
+          <TeamMemberRow
+            index={1}
+            title="Anastasia – Jugendleiterin"
+            text={`Ich bin seit August 2025 bei YouthBridge dabei und habe durch eine Freundin den Weg dorthin gefunden. Schon von Anfang an habe ich mich dort unglaublich wohlgefühlt. Die offene und herzliche Art dort hat es mir leicht gemacht, mich einzubringen und Teil der Gemeinschaft zu werden.
+
+Durch mein Engagement habe ich nicht nur viele wundervolle und inspirierende Menschen kennengelernt, sondern auch persönlich viel dazugewonnen. Vor allem mein Selbstbewusstsein hat sich enorm gestärkt, weil ich gemerkt habe, wie viel ich bewirken und mitgestalten kann.
+
+Meine persönlichen Highlights sind immer die Kamingespräche mit unterschiedlichen Politikern. Dabei finde ich es besonders spannend, direkt Fragen stellen zu können und neue Einblicke in politische Themen zu bekommen, die man sonst nicht erhält.
+
+Ich kann YouthBridge wirklich jedem empfehlen – besonders, wenn man auf der Suche nach einem Raum ist, in dem man sich entfalten kann und sich weiterentwickeln kann.`}
+            imageSrc="/team-anastasia.jpg"
+            imageAlt="Anastasia, Jugendleiterin bei YouthBridge"
+          />
         </div>
       </section>
 
