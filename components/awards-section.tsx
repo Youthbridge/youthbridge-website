@@ -43,6 +43,7 @@ export function AwardsSection() {
       date: "November 2025",
       quote: "„Diese Auszeichnung ist nicht nur eine Ehre, sondern ein Versprechen an mich selbst: Weitermachen. Weiterreden. Weiter zuhören.“",
       instagramUrl: "https://www.instagram.com/p/DRIDLIUCC0-/?img_index=1",
+      imageSrc: "/award-mathias-kaspar.jpg",
       colorClass: "from-emerald-500/10 to-emerald-600/5 border-emerald-100",
     },
     {
