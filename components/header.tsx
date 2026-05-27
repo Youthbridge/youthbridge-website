@@ -17,7 +17,6 @@ const navItems = [
     ],
   },
   { label: "BILDUNGSANGEBOTE", href: "/bildungsangebote" },
-  { label: "PROJEKTARBEIT", href: "/projektarbeit" },
   { label: "YB VERBAND", href: "/verband" },
   { label: "IMPRESSUM", href: "/impressum" },
 ]
