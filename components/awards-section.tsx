@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { Instagram, ArrowUpRight, Image as ImageIcon } from "lucide-react"
 
 interface AwardItem {
@@ -22,6 +23,7 @@ export function AwardsSection() {
       date: "Februar 2026",
       quote: "„Herzlichen Glückwunsch zu dieser Auszeichnung: Bundesverdienstkreuz! Du verdienst alle Orden und Medaillen dieser Welt! 🏆“",
       instagramUrl: "https://www.instagram.com/p/DUoAXR6iMkD/?img_index=1",
+      imageSrc: "/award-eva-haller.jpg",
       colorClass: "from-amber-500/10 to-amber-600/5 border-amber-100",
     },
     {
@@ -31,6 +33,7 @@ export function AwardsSection() {
       date: "Oktober 2022",
       quote: "„Es ist ein wunderbares Gefühl, wenn die Mühen und das Herzblut für eine große Vision wahrgenommen werden.“",
       instagramUrl: "https://www.instagram.com/p/Cjub3hsIbui/?img_index=1",
+      imageSrc: "/award-olga-kotlytska.jpg",
       colorClass: "from-sky-500/10 to-sky-600/5 border-sky-100",
     },
     {
@@ -130,16 +133,27 @@ export function AwardsSection() {
                   </a>
                 </div>
 
-                {/* Image Placeholder on respective Outer Edge */}
-                <div className={`w-28 h-28 md:w-32 md:h-32 shrink-0 rounded-xl border-2 border-dashed border-slate-200 bg-slate-50/50 flex flex-col items-center justify-center gap-2 group-hover:border-[#1a5276]/30 group-hover:bg-slate-50 transition-all duration-300 self-center ${
+                {/* Image Placeholder or Actual Image on respective Outer Edge */}
+                <div className={`w-28 h-28 md:w-32 md:h-32 shrink-0 rounded-xl overflow-hidden border border-slate-100 flex items-center justify-center relative self-center ${
                   isLeftColumn 
                     ? "order-1" // Left side
                     : "order-1 md:order-2" // Right side on desktop, left on mobile
                 }`}>
-                  <ImageIcon className="w-6 h-6 text-slate-300 group-hover:text-[#1a5276]/40 transition-colors" />
-                  <span className="text-[10px] font-semibold text-slate-400 group-hover:text-slate-500 transition-colors select-none">
-                    Bild folgt
-                  </span>
+                  {award.imageSrc ? (
+                    <Image 
+                      src={award.imageSrc} 
+                      alt={`Foto von ${award.recipient}`}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div className="w-full h-full border-2 border-dashed border-slate-200 bg-slate-50/50 flex flex-col items-center justify-center gap-2 group-hover:border-[#1a5276]/30 group-hover:bg-slate-50 transition-all duration-300">
+                      <ImageIcon className="w-6 h-6 text-slate-300 group-hover:text-[#1a5276]/40 transition-colors" />
+                      <span className="text-[10px] font-semibold text-slate-400 group-hover:text-slate-500 transition-colors select-none">
+                        Bild folgt
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
             )
