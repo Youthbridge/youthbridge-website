@@ -52,6 +52,7 @@ export function AwardsSection() {
       date: "Juni 2021",
       quote: "„Fulminanter hätte der Neustart in die Präsenzveranstaltungen für uns nicht sein können. Wir sind stolz und glücklich!“",
       instagramUrl: "https://www.instagram.com/p/CQauNoBh36w/?img_index=1",
+      imageSrc: "/award-integrationspreis.jpg",
       colorClass: "from-indigo-500/10 to-indigo-600/5 border-indigo-100",
     },
   ]
