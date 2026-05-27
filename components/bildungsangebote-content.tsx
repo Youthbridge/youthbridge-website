@@ -85,6 +85,77 @@ function WorkshopRow({
   )
 }
 
+/* ─── Juniorreferent row (alternating, portrait images) ─── */
+function ReferentRow({
+  title,
+  text,
+  index,
+  imageSrc,
+  imageAlt,
+}: {
+  title: string
+  text: string
+  index: number
+  imageSrc: string
+  imageAlt?: string
+}) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [visible, setVisible] = useState(false)
+  const isEven = index % 2 === 0
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true)
+          observer.unobserve(el)
+        }
+      },
+      { threshold: 0.1 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <div
+      ref={ref}
+      className={`flex flex-col ${
+        isEven ? "md:flex-row" : "md:flex-row-reverse"
+      } items-center gap-8 md:gap-16 transition-all duration-1000 ease-out ${
+        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+      }`}
+    >
+      {/* Text Area */}
+      <div className="flex-1 space-y-4">
+        <h3
+          className="text-2xl font-bold text-[#1a5276]"
+          style={{
+            fontFamily: "var(--font-oswald), sans-serif",
+            letterSpacing: "0.01em",
+          }}
+        >
+          {title}
+        </h3>
+        <p className="text-[#2c3e50] leading-relaxed text-[15px] whitespace-pre-line">
+          {text}
+        </p>
+      </div>
+      {/* Image Area - no box, larger, portrait ratio */}
+      <div className="w-full md:w-[320px] aspect-[3/4] relative rounded-2xl overflow-hidden shadow-md flex-shrink-0">
+        <Image
+          src={imageSrc}
+          alt={imageAlt || title}
+          fill
+          className="object-cover object-center"
+        />
+      </div>
+    </div>
+  )
+}
+
 /* ─── Call to Action Component ─── */
 function BookingCTA() {
   const [copied, setCopied] = useState(false)
@@ -291,24 +362,30 @@ export function BildungsangeboteContent() {
           >
             Unsere Juniorreferenten
           </h2>
-          <WorkshopRow
+          <ReferentRow
             index={0}
             title="Timur – Juniorreferent"
-            text="Als Juniorreferent bei YouthBridge setze ich mich aktiv für den Austausch zwischen jungen Menschen mit unterschiedlichen Hintergründen ein. Gerade in einer vielfältigen Stadt wie München sehe ich großes Potenzial darin, Dialogräume zu schaffen, in denen gegenseitiges Verständnis wachsen kann. Durch meinen eigenen Hintergrund habe ich erlebt, wie wichtig es ist, gehört zu werden und sich einbringen zu können. Diese Erfahrung motiviert mich, Projekte mitzugestalten, die Integration, Teilhabe und demokratisches Engagement fördern. Bei YouthBridge bringe ich meine Perspektive ein, entwickle meine Kompetenzen weiter und leiste einen konkreten Beitrag für eine offene und solidarische Gesellschaft."
+            text="Als Juniorreferent bei YouthBridge setze ich mich aktiv für den Austausch zwischen jungen Menschen mit unterschiedlichen Hintergründen ein. Gerade in einer vielfältigen Stadt wie München sehe ich großes Potenzial darin, Dialogräume zu schaffen, in denen gegenseitiges Verständnis wachsen kann. Durch meinen eigenen Hintergrund habe ich erlebt, wie wichtig es ist, gehört zu werden und sich einbringen zu können. Diese Erfahrung motiviert mich, Projekte mitzugestalten, die Integration, Teilhabe und demokratisches Engagement fördern. Bei YouthBridge bringe ich meine Perspektive ein, entwickle meine Kompetenzen weiter und leiste einen konkreten Beitrag für eine open und solidarische Gesellschaft."
             imageSrc="/juniorreferent-1.jpg"
             imageAlt="Juniorreferent Timur bei YouthBridge"
           />
-          <WorkshopRow
+          <ReferentRow
             index={1}
             title="Sammy – Juniorreferent"
             text="Ich mag es, Dinge auseinanderzunehmen und gemeinsam neu zusammenzusetzen. Was mich motiviert: Räume schaffen, in denen verschiedene Perspektiven Platz haben."
             imageSrc="/juniorreferent-2.jpg"
             imageAlt="Juniorreferent Sammy bei YouthBridge"
           />
-          <WorkshopRow
+          <ReferentRow
             index={2}
             title="Jan Buchala – Juniorreferent"
-            text="Servus, ich bin Jan Buchala und bei YouthBridge als Referent aktiv. Aktuell strebe ich einen Master in Politikwissenschaft an der LMU an und setze mich intensiv mit gesellschaftlichen und politischen Entwicklungen auseinander. Gerade weil ich viele Entwicklungen unserer Zeit mit Sorge betrachte, ist es mir wichtig, nicht nur zu kritisieren, sondern selbst aktiv zu werden. Bei YouthBridge habe ich die Möglichkeit, Schüler dort abzuholen, wo sie stehen, durch interaktive Workshops, die an ihre Lebensrealität und Erfahrungen auf Social Media anknüpfen. Mir ist besonders wichtig zu zeigen, wie stark wir alle durch Algorithmen und Desinformation beeinflusst werden und warum Medienkompetenz eine zentrale Rolle für unsere Demokratie spielt. Ich freue mich, meine Begeisterung für politische Bildung und das Sprechen vor Gruppen mit einem sinnvollen Ziel verbinden zu können und so einen kleinen Beitrag zur Stärkung unserer Demokratie in Bayern zu leisten."
+            text={`Servus, ich bin Jan Buchala und bei YouthBridge als Referent aktiv. Aktuell strebe ich einen Master in Politikwissenschaft an der LMU an und setze mich intensiv mit gesellschaftlichen und politischen Entwicklungen auseinander.
+
+Gerade weil ich viele Entwicklungen unserer Zeit mit Sorge betrachte, ist es mir wichtig, nicht nur zu kritisieren, sondern selbst aktiv zu werden. Bei YouthBridge habe ich die Möglichkeit, Schüler dort abzuholen, wo sie stehen, durch interaktive Workshops, die an ihre Lebensrealität und Erfahrungen auf Social Media anknüpfen.
+
+Mir ist besonders wichtig zu zeigen, wie stark wir alle durch Algorithmen und Desinformation beeinflusst werden und warum Medienkompetenz eine zentrale Rolle für unsere Demokratie spielt.
+
+Ich freue mich, meine Begeisterung für politische Bildung und das Sprechen vor Gruppen mit einem sinnvollen Ziel verbinden zu können und so einen kleinen Beitrag zur Stärkung unserer Demokratie in Bayern zu leisten.`}
             imageSrc="/juniorreferent-3.jpg"
             imageAlt="Juniorreferent Jan Buchala bei YouthBridge"
           />
