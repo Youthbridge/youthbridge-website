@@ -26,6 +26,24 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   }, [])
 
   const setLanguage = (lang: Language) => {
+    // GDPR Consent check for Google Translate functional cookies
+    if (lang === "en") {
+      const savedConsent = localStorage.getItem("youthbridge-cookie-consent")
+      let hasFunctional = false
+      if (savedConsent) {
+        try {
+          const parsed = JSON.parse(savedConsent)
+          hasFunctional = !!parsed.functional
+        } catch (e) {}
+      }
+
+      if (!hasFunctional) {
+        // Open cookie settings and halt translation until consented
+        window.dispatchEvent(new CustomEvent("open-cookie-settings"))
+        return
+      }
+    }
+
     setLanguageState(lang)
     
     // Set Google Translate cookie

@@ -30,7 +30,7 @@ const programs = [
     ],
     buttonText: "ERFAHRE MEHR!",
     buttonIcon: Flag,
-    href: "/projektarbeit",
+    href: "/verband",
   },
   {
     id: "uni",

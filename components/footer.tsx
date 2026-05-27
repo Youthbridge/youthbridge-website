@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 import { Facebook, Instagram, Youtube } from "lucide-react"
@@ -25,15 +27,23 @@ export function Footer() {
         </div>
 
         {/* Copyright + Links */}
-        <p className="text-sm font-semibold text-[#1a3a8f]">
-          Copyright &copy; EJKA e.V. {currentYear}&nbsp;|&nbsp;
+        <p className="text-sm font-semibold text-[#1a3a8f] flex flex-wrap justify-center items-center gap-x-1.5 gap-y-2">
+          <span>Copyright &copy; EJKA e.V. {currentYear}</span>
+          <span className="text-gray-300">|</span>
           <Link href="/datenschutz" className="hover:underline">
             Datenschutzerklärung
           </Link>
-          &nbsp;|&nbsp;
+          <span className="text-gray-300">|</span>
           <Link href="/impressum" className="hover:underline">
             Impressum
           </Link>
+          <span className="text-gray-300">|</span>
+          <button 
+            onClick={() => window.dispatchEvent(new CustomEvent("open-cookie-settings"))}
+            className="hover:underline cursor-pointer font-semibold focus:outline-none"
+          >
+            Cookie-Einstellungen
+          </button>
         </p>
 
         {/* Social Media Icons */}
