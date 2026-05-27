@@ -59,28 +59,32 @@ export function AwardsSection() {
   ]
 
   return (
-    <section className="relative w-full py-16 md:py-24 bg-gradient-to-b from-slate-50 to-white overflow-hidden border-y border-slate-100">
+    <section className="relative w-full py-12 md:py-16 bg-gradient-to-b from-slate-50 to-white overflow-hidden border-y border-slate-100">
       {/* Decorative background elements */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#1a5276]/5 rounded-full filter blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-amber-500/5 rounded-full filter blur-3xl pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-          <span 
-            className="text-xs md:text-sm font-bold tracking-widest text-[#1a5276] uppercase block"
-            style={{ fontFamily: "var(--font-oswald), sans-serif" }}
-          >
-            Anerkennung & Erfolge
-          </span>
-          <h2 
-            className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight"
-            style={{ fontFamily: "var(--font-oswald), sans-serif" }}
-          >
-            Auszeichnungen & Ehrungen
-          </h2>
-          <div className="h-1.5 w-16 bg-[#1a5276] mx-auto rounded-full mt-2" />
-          <p className="text-slate-600 text-sm md:text-base pt-2 leading-relaxed">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-10 mb-10 pb-6 border-b border-slate-100/80">
+          <div className="space-y-1.5 md:max-w-md">
+            <span 
+              className="text-xs md:text-sm font-bold tracking-widest text-[#1a5276] uppercase block"
+              style={{ fontFamily: "var(--font-oswald), sans-serif" }}
+            >
+              Anerkennung & Erfolge
+            </span>
+            <h2 
+              className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight"
+              style={{ fontFamily: "var(--font-oswald), sans-serif" }}
+            >
+              Auszeichnungen
+            </h2>
+          </div>
+          
+          <div className="hidden md:block w-px h-12 bg-slate-200 self-center" />
+
+          <p className="text-slate-600 text-sm md:text-base leading-relaxed md:max-w-xl">
             Unser Engagement und der Beitrag von YouthBridge zur Stärkung der Zivilgesellschaft, 
             Demokratiebildung und Antisemitismusprävention werden auf höchster Landes- und Bundesebene gewürdigt.
           </p>
