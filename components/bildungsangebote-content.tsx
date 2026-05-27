@@ -305,6 +305,13 @@ export function BildungsangeboteContent() {
             imageSrc="/juniorreferent-2.jpg"
             imageAlt="Juniorreferent Sammy bei YouthBridge"
           />
+          <WorkshopRow
+            index={2}
+            title="Jan Buchala – Juniorreferent"
+            text="Servus, ich bin Jan Buchala und bei YouthBridge als Referent aktiv. Aktuell strebe ich einen Master in Politikwissenschaft an der LMU an und setze mich intensiv mit gesellschaftlichen und politischen Entwicklungen auseinander. Gerade weil ich viele Entwicklungen unserer Zeit mit Sorge betrachte, ist es mir wichtig, nicht nur zu kritisieren, sondern selbst aktiv zu werden. Bei YouthBridge habe ich die Möglichkeit, Schüler dort abzuholen, wo sie stehen, durch interaktive Workshops, die an ihre Lebensrealität und Erfahrungen auf Social Media anknüpfen. Mir ist besonders wichtig zu zeigen, wie stark wir alle durch Algorithmen und Desinformation beeinflusst werden und warum Medienkompetenz eine zentrale Rolle für unsere Demokratie spielt. Ich freue mich, meine Begeisterung für politische Bildung und das Sprechen vor Gruppen mit einem sinnvollen Ziel verbinden zu können und so einen kleinen Beitrag zur Stärkung unserer Demokratie in Bayern zu leisten."
+            imageSrc="/juniorreferent-3.jpg"
+            imageAlt="Juniorreferent Jan Buchala bei YouthBridge"
+          />
         </div>
       </section>
 
