@@ -86,7 +86,7 @@ export function AwardsSection() {
 
           <p className="text-slate-600 text-sm md:text-base leading-relaxed md:max-w-xl">
             Unser Engagement und der Beitrag von YouthBridge zur Stärkung der Zivilgesellschaft, 
-            Demokratiebildung und Antisemitismusprävention werden auf höchster Landes- und Bundesebene gewürdigt.
+            Demokratiebildung und Radikalisierungsprävention werden auf höchster Landes- und Bundesebene gewürdigt.
           </p>
         </div>
 
