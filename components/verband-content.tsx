@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Vote, HeartHandshake, ShieldAlert, Sparkles, Flag, Layers, MapPin } from "lucide-react"
+import { Vote, HeartHandshake, ShieldAlert, Sparkles, Flag, Layers, MapPin, Mail } from "lucide-react"
 
 export function VerbandContent() {
   const [visible, setVisible] = useState(false)
@@ -198,6 +198,31 @@ export function VerbandContent() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="max-w-5xl mx-auto px-6 pb-16 md:pb-24">
+        <div 
+          className={`bg-white border border-gray-100 rounded-3xl p-8 md:p-10 shadow-lg text-center flex flex-col items-center gap-4 transition-all duration-700 ${
+            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+          }`}
+        >
+          <div className="p-4 bg-[#1a3a8f]/10 text-[#1a3a8f] rounded-2xl">
+            <Mail size={32} />
+          </div>
+          <h3 className="text-2xl font-black text-[#1a3a8f]" style={{ fontFamily: "var(--font-oswald), sans-serif" }}>
+            Kontakt aufnehmen
+          </h3>
+          <p className="text-[#2c3e50] text-lg max-w-xl">
+            Wenn Sie mehr erfahren wollen oder Kontakt aufnehmen möchten – kontaktieren Sie uns unter{" "}
+            <a 
+              href="mailto:youthbridge@ejka.org" 
+              className="text-[#2a52be] font-bold hover:underline"
+            >
+              youthbridge@ejka.org
+            </a>
+          </p>
         </div>
       </section>
     </div>
