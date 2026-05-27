@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import { BildungsangeboteHero } from "./bildungsangebote-hero"
 import { MetricsSection } from "./metrics-section"
+import { Copy, Check, Mail } from "lucide-react"
 
 
 /* ─── Workshop row (alternating) ─── */
@@ -84,6 +85,73 @@ function WorkshopRow({
   )
 }
 
+/* ─── Call to Action Component ─── */
+function BookingCTA() {
+  const [copied, setCopied] = useState(false)
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText("youthbridge@ejka.org")
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch (err) {
+      console.error("Failed to copy email: ", err)
+    }
+  }
+
+  return (
+    <section className="w-full py-12 md:py-16 px-4 bg-[#f4f9fc] border-y border-[#d6eaf8]">
+      <div className="max-w-4xl mx-auto text-center space-y-6">
+        <h2
+          className="text-2xl md:text-3xl font-bold text-[#1a5276]"
+          style={{
+            fontFamily: "var(--font-oswald), sans-serif",
+            letterSpacing: "0.01em",
+          }}
+        >
+          Buchen Sie uns jetzt!
+        </h2>
+        <p className="text-[#2c3e50] max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
+          Unsere YouBienare sind ideal für Schulunterricht und für Veranstaltungen von Vereinen, Verbänden, Institutionen und Unternehmen!
+        </p>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto mt-6">
+          <div className="flex items-center gap-3 bg-white px-4 py-3 rounded-xl border border-[#d6eaf8] shadow-sm w-full sm:w-auto flex-1 justify-center sm:justify-start min-w-0">
+            <Mail className="w-5 h-5 text-[#85c1e9] flex-shrink-0" />
+            <a
+              href="mailto:youthbridge@ejka.org"
+              className="text-[#1a5276] font-semibold hover:underline truncate select-all"
+            >
+              youthbridge@ejka.org
+            </a>
+          </div>
+
+          <button
+            onClick={handleCopy}
+            className={`w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-medium text-sm transition-all duration-300 shadow-sm border cursor-pointer ${
+              copied
+                ? "bg-emerald-50 border-emerald-200 text-emerald-600"
+                : "bg-[#1a5276] hover:bg-[#154360] border-transparent text-white active:scale-95"
+            }`}
+          >
+            {copied ? (
+              <>
+                <Check className="w-4 h-4" />
+                <span>Kopiert!</span>
+              </>
+            ) : (
+              <>
+                <Copy className="w-4 h-4" />
+                <span>Copy to clipboard</span>
+              </>
+            )}
+          </button>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 /* ─── Main component ─── */
 export function BildungsangeboteContent() {
   const [introVisible, setIntroVisible] = useState(false)
@@ -101,6 +169,8 @@ export function BildungsangeboteContent() {
       {/* ── Metrics Section ── */}
       <MetricsSection />
 
+      {/* ── Booking Call to Action ── */}
+      <BookingCTA />
 
       {/* ── Intro text ── */}
       <section className="w-full py-16 md:py-24 px-4 bg-white">
