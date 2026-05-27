@@ -213,7 +213,7 @@ function BookingCTA() {
             ) : (
               <>
                 <Copy className="w-4 h-4" />
-                <span>Copy to clipboard</span>
+                <span>E-Mail kopieren</span>
               </>
             )}
           </button>
