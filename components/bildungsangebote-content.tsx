@@ -279,6 +279,35 @@ export function BildungsangeboteContent() {
         </div>
       </section>
 
+      {/* ── Juniorreferenten Section ── */}
+      <section className="w-full py-16 px-4 bg-white border-t border-[#d6eaf8]">
+        <div className="max-w-5xl mx-auto space-y-24">
+          <h2
+            className="text-3xl md:text-4xl font-bold text-[#1a5276] text-center"
+            style={{
+              fontFamily: "var(--font-oswald), sans-serif",
+              letterSpacing: "0.01em",
+            }}
+          >
+            Unsere Juniorreferenten
+          </h2>
+          <WorkshopRow
+            index={0}
+            title="Timur – Juniorreferent"
+            text="Als Juniorreferent bei YouthBridge setze ich mich aktiv für den Austausch zwischen jungen Menschen mit unterschiedlichen Hintergründen ein. Gerade in einer vielfältigen Stadt wie München sehe ich großes Potenzial darin, Dialogräume zu schaffen, in denen gegenseitiges Verständnis wachsen kann. Durch meinen eigenen Hintergrund habe ich erlebt, wie wichtig es ist, gehört zu werden und sich einbringen zu können. Diese Erfahrung motiviert mich, Projekte mitzugestalten, die Integration, Teilhabe und demokratisches Engagement fördern. Bei YouthBridge bringe ich meine Perspektive ein, entwickle meine Kompetenzen weiter und leiste einen konkreten Beitrag für eine offene und solidarische Gesellschaft."
+            imageSrc="/juniorreferent-1.jpg"
+            imageAlt="Juniorreferent Timur bei YouthBridge"
+          />
+          <WorkshopRow
+            index={1}
+            title="Sammy – Juniorreferent"
+            text="Ich mag es, Dinge auseinanderzunehmen und gemeinsam neu zusammenzusetzen. Was mich motiviert: Räume schaffen, in denen verschiedene Perspektiven Platz haben."
+            imageSrc="/juniorreferent-2.jpg"
+            imageAlt="Juniorreferent Sammy bei YouthBridge"
+          />
+        </div>
+      </section>
+
       {/* ── Contact Section ── */}
       <section className="w-full py-16 md:py-24 px-4 bg-white">
         <div className="max-w-3xl mx-auto">
