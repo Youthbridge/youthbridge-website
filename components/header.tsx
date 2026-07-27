@@ -18,6 +18,7 @@ const navItems = [
   },
   { label: "BILDUNGSANGEBOTE", href: "/bildungsangebote" },
   { label: "YB VERBAND", href: "/verband" },
+  { label: "YB FRANKEN", href: "/franken" },
   { label: "IMPRESSUM", href: "/impressum" },
 ]
 

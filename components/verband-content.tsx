@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Vote, HeartHandshake, ShieldAlert, Sparkles, Flag, Layers, MapPin, Mail } from "lucide-react"
+import { Vote, HeartHandshake, ShieldAlert, Sparkles, Flag, Layers, MapPin, Mail, FileText, FileDown } from "lucide-react"
 
 export function VerbandContent() {
   const [visible, setVisible] = useState(false)
@@ -75,6 +75,19 @@ export function VerbandContent() {
           <p className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto mt-4 font-medium">
             Gemeinsam Brücken bauen, Vorurteile abbauen und gesellschaftlichen Zusammenhalt aktiv mitgestalten.
           </p>
+
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <a
+              href="/Satzung-YouthBridge-Bayern.pdf"
+              download="Satzung-YouthBridge-Bayern.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#1a3a8f] font-bold rounded-full shadow-lg hover:bg-cyan-50 transition-all text-sm"
+            >
+              <FileDown size={18} />
+              <span>Satzung herunterladen (PDF)</span>
+            </a>
+          </div>
         </div>
       </section>
 
@@ -151,8 +164,41 @@ export function VerbandContent() {
         </div>
       </section>
 
+      {/* Satzung Download Banner */}
+      <section className="max-w-5xl mx-auto px-6 py-6">
+        <div className="bg-gradient-to-r from-blue-50 via-slate-50 to-indigo-50 border border-blue-100 rounded-3xl p-8 md:p-10 shadow-lg flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-5 text-left">
+            <div className="p-4 bg-[#1a3a8f] text-white rounded-2xl flex-shrink-0 shadow-md">
+              <FileText size={34} />
+            </div>
+            <div>
+              <span className="text-xs font-bold uppercase tracking-wider text-[#5dade2]">
+                Rechtliche Grundlagen & Transparenz
+              </span>
+              <h3 className="text-2xl font-extrabold text-[#1a3a8f] mt-0.5" style={{ fontFamily: "var(--font-oswald), sans-serif" }}>
+                Satzung des Jugendverbands „YouthBridge Bayern“
+              </h3>
+              <p className="text-slate-600 text-sm md:text-base mt-1">
+                Lade die offizielle Satzung unseres Jugendverbands als PDF-Dokument herunter.
+              </p>
+            </div>
+          </div>
+          
+          <a
+            href="/Satzung-YouthBridge-Bayern.pdf"
+            download="Satzung-YouthBridge-Bayern.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 py-3.5 bg-[#1a3a8f] hover:bg-[#244cb3] text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 text-sm flex items-center justify-center gap-2 flex-shrink-0"
+          >
+            <FileDown size={18} />
+            <span>Satzung als PDF</span>
+          </a>
+        </div>
+      </section>
+
       {/* Structure Section (Wie wir arbeiten) */}
-      <section className="max-w-5xl mx-auto px-6 py-12 md:py-20">
+      <section className="max-w-5xl mx-auto px-6 py-12 md:py-16">
         <div className="bg-gradient-to-br from-slate-900 to-indigo-950 text-white rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-80 h-80 bg-white/5 rounded-full blur-3xl pointer-events-none" />
           

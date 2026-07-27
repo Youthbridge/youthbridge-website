@@ -43,6 +43,7 @@ const benefits = [
 /* ─── form field config ─── */
 const programs = [
   { value: "muenchen", label: "YouthBridge München – Leadership-Programm" },
+  { value: "franken", label: "YouthBridge Franken – Standort Nürnberg & Region" },
   { value: "verband", label: "YouthBridge Verband – Demokratie & Teilhabe" },
   { value: "uni", label: "YouthBridge UNI – Bildungsangebote" },
   { value: "sonstiges", label: "Sonstiges / Ich bin mir noch unsicher" },

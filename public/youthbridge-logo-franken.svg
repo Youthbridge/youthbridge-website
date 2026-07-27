@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 480" width="100%" height="100%">
+  <defs>
+    <!-- Gradients for hands -->
+    <linearGradient id="hand1" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0077B6"/>
+      <stop offset="100%" stop-color="#00B4D8"/>
+    </linearGradient>
+    <linearGradient id="hand2" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+    <linearGradient id="hand3" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7E22CE"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+    <linearGradient id="hand4" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#BE185D"/>
+      <stop offset="100%" stop-color="#EC4899"/>
+    </linearGradient>
+    <linearGradient id="hand5" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    
+    <!-- Text gradient for FRANKEN -->
+    <linearGradient id="frankenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D92662"/>
+      <stop offset="100%" stop-color="#E11D48"/>
+    </linearGradient>
+
+    <!-- Filter for clean drop shadow -->
+    <filter id="subtleShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#subtleShadow)">
+    <!-- Bridge Arch Baseline -->
+    <path d="M 70 230 C 170 170, 330 170, 430 230 C 370 200, 130 200, 70 230 Z" fill="#1A3A8F" opacity="0.15"/>
+
+    <!-- Colorful Reaching Hands forming Bridge -->
+    <!-- Hand 1 (Far Left - Cyan) -->
+    <g transform="translate(85, 90)">
+      <path d="M 20 120 C 15 90, 25 60, 45 40 C 50 35, 58 42, 53 48 C 40 65, 35 85, 42 110 L 20 120 Z" fill="url(#hand1)"/>
+      <circle cx="48" cy="35" r="7" fill="url(#hand1)"/>
+      <path d="M 32 115 C 30 85, 45 62, 60 50 C 65 46, 70 53, 65 57 C 52 70, 42 88, 48 110 Z" fill="url(#hand1)"/>
+      <circle cx="63" cy="46" r="6" fill="url(#hand1)"/>
+    </g>
+
+    <!-- Hand 2 (Mid Left - Blue) -->
+    <g transform="translate(145, 60)">
+      <path d="M 20 130 C 18 95, 35 60, 60 30 C 65 24, 73 31, 67 37 C 47 62, 35 90, 40 120 Z" fill="url(#hand2)"/>
+      <circle cx="63" cy="24" r="7.5" fill="url(#hand2)"/>
+      <path d="M 35 125 C 35 95, 52 68, 75 45 C 80 40, 87 47, 81 52 C 62 72, 48 95, 52 120 Z" fill="url(#hand2)"/>
+      <circle cx="78" cy="38" r="6.5" fill="url(#hand2)"/>
+    </g>
+
+    <!-- Hand 3 (Center Arch - Purple/Magenta) -->
+    <g transform="translate(210, 40)">
+      <path d="M 40 140 C 38 95, 40 50, 40 10 C 40 3, 50 3, 50 10 C 50 50, 48 95, 58 138 Z" fill="url(#hand3)"/>
+      <circle cx="45" cy="5" r="8" fill="url(#hand3)"/>
+      <path d="M 22 138 C 28 98, 30 65, 20 28 C 18 21, 28 17, 30 24 C 40 58, 38 95, 38 136 Z" fill="url(#hand3)"/>
+      <circle cx="18" cy="20" r="7" fill="url(#hand3)"/>
+      <path d="M 58 138 C 58 95, 60 58, 70 24 C 72 17, 82 21, 80 28 C 70 65, 68 98, 74 138 Z" fill="url(#hand3)"/>
+      <circle cx="72" cy="20" r="7" fill="url(#hand3)"/>
+    </g>
+
+    <!-- Hand 4 (Mid Right - Pink/Magenta) -->
+    <g transform="translate(275, 60)">
+      <path d="M 80 130 C 82 95, 65 60, 40 30 C 35 24, 27 31, 33 37 C 53 62, 65 90, 60 120 Z" fill="url(#hand4)"/>
+      <circle cx="37" cy="24" r="7.5" fill="url(#hand4)"/>
+      <path d="M 65 125 C 65 95, 48 68, 25 45 C 20 40, 13 47, 19 52 C 38 72, 52 95, 48 120 Z" fill="url(#hand4)"/>
+      <circle cx="22" cy="38" r="6.5" fill="url(#hand4)"/>
+    </g>
+
+    <!-- Hand 5 (Far Right - Orange) -->
+    <g transform="translate(335, 90)">
+      <path d="M 80 120 C 85 90, 75 60, 55 40 C 50 35, 42 42, 47 48 C 60 65, 65 85, 58 110 Z" fill="url(#hand5)"/>
+      <circle cx="52" cy="35" r="7" fill="url(#hand5)"/>
+      <path d="M 68 115 C 70 85, 55 62, 40 50 C 35 46, 30 53, 35 57 C 48 70, 58 88, 52 110 Z" fill="url(#hand5)"/>
+      <circle cx="37" cy="46" r="6" fill="url(#hand5)"/>
+    </g>
+
+    <!-- Arch Connecting Pill/Bridge Bar -->
+    <path d="M 90 205 Q 250 150 410 205 Q 250 165 90 205 Z" fill="#1A3A8F"/>
+
+    <!-- YOUTH BRIDGE Text -->
+    <text x="250" y="295" 
+          font-family="'Oswald', 'Inter', 'Arial Black', sans-serif" 
+          font-size="46" 
+          font-weight="900" 
+          fill="#1A3A8F" 
+          text-anchor="middle" 
+          letter-spacing="1.5">
+      YOUTH BRIDGE
+    </text>
+
+    <!-- FRANKEN Subtitle Text -->
+    <text x="250" y="350" 
+          font-family="'Oswald', 'Inter', 'Montserrat', sans-serif" 
+          font-size="34" 
+          font-weight="800" 
+          fill="url(#frankenGrad)" 
+          text-anchor="middle" 
+          letter-spacing="6">
+      FRANKEN
+    </text>
+  </g>
+</svg>
