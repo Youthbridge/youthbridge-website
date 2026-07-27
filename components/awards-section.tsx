@@ -6,11 +6,12 @@ import { Instagram, ArrowUpRight, Image as ImageIcon } from "lucide-react"
 interface AwardItem {
   id: number
   recipient: string
+  role?: string
   title: string
   date: string
   quote: string
   instagramUrl: string
-  imageSrc?: string // Future use for real images
+  imageSrc?: string
   colorClass: string
 }
 
@@ -19,6 +20,7 @@ export function AwardsSection() {
     {
       id: 1,
       recipient: "Eva Haller",
+      role: "Präsidentin der EJKA",
       title: "Bundesverdienstkreuz am Bande",
       date: "Februar 2026",
       quote: "„Herzlichen Glückwunsch zu dieser Auszeichnung: Bundesverdienstkreuz! Du verdienst alle Orden und Medaillen dieser Welt! 🏆“",
@@ -29,6 +31,7 @@ export function AwardsSection() {
     {
       id: 2,
       recipient: "Olga Kotlytska",
+      role: "Projektleitung",
       title: "Bayerischer Verdienstorden",
       date: "Oktober 2022",
       quote: "„Es ist ein wunderbares Gefühl, wenn die Mühen und das Herzblut für eine große Vision wahrgenommen werden.“",
@@ -39,6 +42,7 @@ export function AwardsSection() {
     {
       id: 3,
       recipient: "Mathias Kaspar",
+      role: "Verbandssprecher",
       title: "Auszeichnung für herausragende Verdienste in der Jugendarbeit",
       date: "November 2025",
       quote: "„Diese Auszeichnung ist nicht nur eine Ehre, sondern ein Versprechen an mich selbst: Weitermachen. Weiterreden. Weiter zuhören.“",
@@ -49,6 +53,7 @@ export function AwardsSection() {
     {
       id: 4,
       recipient: "YouthBridge",
+      role: "Initiative & Jugendverband",
       title: "Bayerischer Integrationspreis 2021",
       date: "Juni 2021",
       quote: "„Fulminanter hätte der Neustart in die Präsenzveranstaltungen für uns nicht sein können. Wir sind stolz und glücklich!“",
@@ -93,7 +98,6 @@ export function AwardsSection() {
         {/* 2x2 Grid Layout for Desktop, 1 Column for Mobile */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {awardsData.map((award, index) => {
-            // Determine if the card is in the left or right column
             const isLeftColumn = index % 2 === 0
 
             return (
@@ -114,10 +118,17 @@ export function AwardsSection() {
                     <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
                       {award.date}
                     </span>
-                    <h3 className="font-extrabold text-slate-800 text-lg tracking-tight group-hover:text-[#1a5276] transition-colors duration-300 leading-snug">
-                      {award.recipient}
-                    </h3>
-                    <p className="text-xs font-bold text-[#1a5276] uppercase tracking-wide leading-normal">
+                    <div>
+                      <h3 className="font-extrabold text-slate-800 text-lg tracking-tight group-hover:text-[#1a5276] transition-colors duration-300 leading-snug">
+                        {award.recipient}
+                      </h3>
+                      {award.role && (
+                        <span className="inline-block text-xs font-semibold text-[#1a5276] bg-[#1a5276]/10 px-2.5 py-0.5 rounded-full mt-1">
+                          {award.role}
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-xs font-bold text-[#1a5276] uppercase tracking-wide leading-normal pt-1">
                       {award.title}
                     </p>
                     <p className="text-slate-600 text-xs md:text-sm italic leading-relaxed pl-3 border-l-2 border-[#1a5276]/30 my-3 font-medium text-balance">
