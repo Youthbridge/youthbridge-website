@@ -195,7 +195,7 @@ function ReferentCardCompact({
       }`}
     >
       <h3
-        className="text-lg md:text-xl font-bold text-[#1a5276] leading-snug"
+        className="text-lg md:text-xl font-bold text-[#1a5276] leading-snug min-h-[3.5rem] flex items-end justify-center pb-1"
         style={{
           fontFamily: "var(--font-oswald), sans-serif",
           letterSpacing: "0.01em",
