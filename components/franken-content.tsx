@@ -392,18 +392,6 @@ export function FrankenContent() {
           </div>
         </div>
       </section>
-
-      {/* ── 6. Bottom Skyline Graphic ── */}
-      <section className="w-full max-w-5xl mx-auto px-6 pb-16 md:pb-24">
-        <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] rounded-3xl overflow-hidden shadow-2xl border border-slate-200/60 bg-black">
-          <Image
-            src="/franken-skyline-footer.jpg"
-            alt="YouthBridge Franken Nürnberg Skyline Logo"
-            fill
-            className="object-cover object-center"
-          />
-        </div>
-      </section>
     </div>
   )
 }
