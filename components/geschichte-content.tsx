@@ -9,15 +9,18 @@ import {
   Lightbulb,
   MapPin,
   ArrowRight,
-  Heart,
 } from "lucide-react"
 
 /* ─── timeline data ─── */
 const milestones = [
   { year: "1997", label: "Gründung YouthBridge New York", icon: Lightbulb },
-  { year: "2001", label: "Stärkung nach 9/11", icon: Heart },
   { year: "2017", label: "Start in München", icon: MapPin },
   { year: "2024", label: "Expansion nach Nürnberg", icon: Globe },
+  {
+    year: "2026",
+    label: "Aufnahme in Bayrischen Jugendring & Gründung des Jugendverbands",
+    icon: Users,
+  },
 ]
 
 /* ─── section data (each "chapter" of the story) ─── */
@@ -204,7 +207,7 @@ export function GeschichteContent() {
       {/* ── Horizontal Timeline (mini) ── */}
       <section className="w-full bg-[#f4f9fc] border-b border-[#d6eaf8]">
         <div className="max-w-5xl mx-auto px-6 py-10 overflow-x-auto">
-          <div className="flex items-center justify-between min-w-[580px]">
+          <div className="flex items-center justify-between min-w-[720px]">
             {milestones.map((m, i) => {
               const Icon = m.icon
               return (
@@ -217,7 +220,7 @@ export function GeschichteContent() {
                     <span className="text-sm font-bold text-[#1a5276]">
                       {m.year}
                     </span>
-                    <span className="text-xs text-[#5d6d7e] text-center max-w-[120px]">
+                    <span className="text-xs text-[#5d6d7e] text-center max-w-[160px]">
                       {m.label}
                     </span>
                   </div>

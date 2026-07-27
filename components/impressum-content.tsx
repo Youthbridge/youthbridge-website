@@ -79,29 +79,38 @@ export function ImpressumContent() {
 
           <div className="space-y-6">
             <h2 className="text-2xl font-bold text-[#1a3a8f] border-b border-gray-100 pb-3">
-              Haftungshinweis
+              Haftung für Links
             </h2>
             <p>
-              Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. 
-              Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.
+              Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.
             </p>
           </div>
 
           <div className="space-y-6">
             <h2 className="text-2xl font-bold text-[#1a3a8f] border-b border-gray-100 pb-3">
-              Disclaimer
+              Urheberrecht
             </h2>
-            <div className="space-y-6">
-              <p>
-                Der Inhalt dieser Homepage ist in Wort und Bild urheberrechtlich geschützt. 
-                Nachdruck – auch auszugsweise – nur mit schriftlicher Genehmigung der EJKA e.V.
-              </p>
-              <p>
-                Die Webseite enthält externe Links (Verlinkungen) zu anderen Webseiten, auf deren Inhalt die Europäische Janusz Korczak Akademie keinen Einfluss hat. 
-                Für die Inhalte und Richtigkeit der bereitgestellten Informationen ist der jeweilige Anbieter der verlinkten Webseite verantwortlich. 
-                Die Europäische Janusz Korczak Akademie übernimmt für diese Inhalte und Richtigkeit keine Haftung.
-              </p>
-            </div>
+            <p>
+              Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.
+            </p>
+          </div>
+
+          <div className="space-y-6">
+            <h2 className="text-2xl font-bold text-[#1a3a8f] border-b border-gray-100 pb-3">
+              Datenschutz
+            </h2>
+            <p>
+              Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder eMail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben. Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich. Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen. Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-Mails, vor.
+            </p>
+          </div>
+
+          <div className="space-y-6">
+            <h2 className="text-2xl font-bold text-[#1a3a8f] border-b border-gray-100 pb-3">
+              Dispute Resolution in accordance with § 36 VSBG
+            </h2>
+            <p>
+              Zur Teilnahme an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle sind wir nicht verpflichtet und nicht bereit.
+            </p>
           </div>
 
         </div>

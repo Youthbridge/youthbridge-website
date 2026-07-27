@@ -107,40 +107,6 @@ Seit 2017 leite ich YouthBridge, das 2021 mit dem Integrationspreis der Bayerisc
           />
           <TeamMemberRow
             index={1}
-            title="Anastasya Semyantych – Jugendleiterin"
-            text={`Ich bin seit August 2025 bei YouthBridge dabei und habe durch eine Freundin den Weg dorthin gefunden. Schon von Anfang an habe ich mich dort unglaublich wohlgefühlt. Die offene und herzliche Art dort hat es mir leicht gemacht, mich einzubringen und Teil der Gemeinschaft zu werden.
-
-Durch mein Engagement habe ich nicht nur viele wundervolle und inspirierende Menschen kennengelernt, sondern auch persönlich viel dazugewonnen. Vor allem mein Selbstbewusstsein hat sich enorm gestärkt, weil ich gemerkt habe, wie viel ich bewirken und mitgestalten kann.
-
-Meine persönlichen Highlights sind immer die Kamingespräche mit unterschiedlichen Politikern. Dabei finde ich es besonders spannend, direkt Fragen stellen zu können und neue Einblicke in politische Themen zu bekommen, die man sonst nicht erhält.
-
-Ich kann YouthBridge wirklich jedem empfehlen – besonders, wenn man auf der Suche nach einem Raum ist, in dem man sich entfalten kann und sich weiterentwickeln kann.`}
-            imageSrc="/team-anastasia.jpg"
-            imageAlt="Anastasya Semyantych, Jugendleiterin bei YouthBridge"
-          />
-          <TeamMemberRow
-            index={2}
-            title="Radoslav Karastoyanov – Jugendleiter"
-            text={`Ich bin 21 Jahre alt und seit 2022 als Jugendleiter bei YouthBridge aktiv. Neben meinem Studium engagiere ich mich mit großer Überzeugung für unsere Gesellschaft. Besonders motiviert mich dabei die eigene Erfahrung: Als ich selbst noch Mitglied war, hat mich YouthBridge fachlich wie persönlich stark geprägt und mir wichtige Perspektiven eröffnet. Diese Erfahrung möchte ich an die nächste Generation weitergeben.
-
-Ich bin überzeugt, dass echter Dialog zwischen jungen Menschen und fundierte politische Bildung zentrale Voraussetzungen für eine offene, verantwortungsbewusste und solidarische Gesellschaft sind. Als Jugendleiter möchte ich Räume schaffen, in denen Austausch, Reflexion und demokratisches Engagement möglich werden, damit wir gemeinsam an einer produktiven und gemeinschaftlichen Zukunft arbeiten können.`}
-            imageSrc="/team-radoslav.jpg"
-            imageAlt="Radoslav Karastoyanov, Jugendleiter bei YouthBridge"
-          />
-          <TeamMemberRow
-            index={3}
-            title="Elisa Mikaelyan – Jugendleiterin"
-            text={`Hey!
-Ich bin Elisa, 19 Jahre alt, Schülerin und eine absolute „waschechte Münchnerin". Alles begann für mich vor zwei Jahren, als mir Youthbridge über die Schule vorgestellt wurde. Ich weiß noch genau, wie ich zu meinem ersten Treffen kam: Ich habe mich vom ersten Moment an unglaublich wohl und direkt willkommen gefühlt. Die offene und inspirierende Atmosphäre hat mich so begeistert, dass ich nicht lange gezögert und mich kurz darauf dazu entschieden habe, als Jugendleiterin aktiv zu werden.
-
-Was mich an dieser Aufgabe am meisten motiviert? Es ist ein fantastisches Gefühl, Teil eines Umfelds zu sein, in dem sich so viele engagierte und motivierte Jugendliche finden. Ich habe durch die Arbeit als Jugendleiterin bereits unglaublich viel über Teamwork, Verantwortung und Kommunikation gelernt.
-
-Ich bin stolz darauf, euch auf diesem Weg begleiten zu dürfen, und freue mich darauf, gemeinsam Neues zu bewegen!`}
-            imageSrc="/team-elisa.jpg"
-            imageAlt="Elisa Mikaelyan, Jugendleiterin bei YouthBridge"
-          />
-          <TeamMemberRow
-            index={4}
             title="Mathias Kaspar – Projektleiter der YouthBridge-UNI Bildungsangebote & Landessprecher des Jugendverbands YouthBridge Bayern"
             text={`Schon früh habe ich erlebt, wie entscheidend es ist, dass junge Menschen nicht nur über Demokratie sprechen, sondern sie aktiv mitgestalten. Heute verstehe ich mein Engagement als Beitrag dazu, Räume zu schaffen, in denen genau das möglich wird.
 
@@ -155,7 +121,7 @@ YouthBridge ist für mich ein Ort gelebter Verbandsarbeit und aktiver Jugendbete
             imageAlt="Mathias Kaspar, Projektleiter der YouthBridge-UNI Bildungsangebote & Landessprecher des Jugendverbands YouthBridge Bayern"
           />
           <TeamMemberRow
-            index={5}
+            index={2}
             title="Igor Breger – Vorstand Youthbridge Bayern & Leiter Youthbridge Franken"
             text={`Als jüdische Person mit Wurzeln in der Ukraine war ich sowohl dort als auch in Deutschland oft mit Vorurteilen konfrontiert, bevor ein echter Dialog hätte stattfinden können. Nicht nur deshalb suchte ich nach Möglichkeiten, Gleichgesinnte zu finden, die die Annahmen kritisch hinterfragen und eine eigene Meinung durch Begegnung und Austausch bilden wollen.
 
@@ -169,6 +135,40 @@ Erreichbar unter: igorbreger@ejka.org.
 Wir sehen uns bei YouthBridge!`}
             imageSrc="/team-igor.jpg"
             imageAlt="Igor Breger, Vorstand Youthbridge Bayern & Leiter Youthbridge Franken"
+          />
+          <TeamMemberRow
+            index={3}
+            title="Anastasya Semyantych – Jugendleiterin"
+            text={`Ich bin seit August 2025 bei YouthBridge dabei und habe durch eine Freundin den Weg dorthin gefunden. Schon von Anfang an habe ich mich dort unglaublich wohlgefühlt. Die offene und herzliche Art dort hat es mir leicht gemacht, mich einzubringen und Teil der Gemeinschaft zu werden.
+
+Durch mein Engagement habe ich nicht nur viele wundervolle und inspirierende Menschen kennengelernt, sondern auch persönlich viel dazugewonnen. Vor allem mein Selbstbewusstsein hat sich enorm gestärkt, weil ich gemerkt habe, wie viel ich bewirken und mitgestalten kann.
+
+Meine persönlichen Highlights sind immer die Kamingespräche mit unterschiedlichen Politikern. Dabei finde ich es besonders spannend, direkt Fragen stellen zu können und neue Einblicke in politische Themen zu bekommen, die man sonst nicht erhält.
+
+Ich kann YouthBridge wirklich jedem empfehlen – besonders, wenn man auf der Suche nach einem Raum ist, in dem man sich entfalten kann und sich weiterentwickeln kann.`}
+            imageSrc="/team-anastasia.jpg"
+            imageAlt="Anastasya Semyantych, Jugendleiterin bei YouthBridge"
+          />
+          <TeamMemberRow
+            index={4}
+            title="Radoslav Karastoyanov – Jugendleiter"
+            text={`Ich bin 21 Jahre alt und seit 2022 als Jugendleiter bei YouthBridge aktiv. Neben meinem Studium engagiere ich mich mit großer Überzeugung für unsere Gesellschaft. Besonders motiviert mich dabei die eigene Erfahrung: Als ich selbst noch Mitglied war, hat mich YouthBridge fachlich wie persönlich stark geprägt und mir wichtige Perspektiven eröffnet. Diese Erfahrung möchte ich an die nächste Generation weitergeben.
+
+Ich bin überzeugt, dass echter Dialog zwischen jungen Menschen und fundierte politische Bildung zentrale Voraussetzungen für eine offene, verantwortungsbewusste und solidarische Gesellschaft sind. Als Jugendleiter möchte ich Räume schaffen, in denen Austausch, Reflexion und demokratisches Engagement möglich werden, damit wir gemeinsam an einer produktiven und gemeinschaftlichen Zukunft arbeiten können.`}
+            imageSrc="/team-radoslav.jpg"
+            imageAlt="Radoslav Karastoyanov, Jugendleiter bei YouthBridge"
+          />
+          <TeamMemberRow
+            index={5}
+            title="Elisa Mikaelyan – Jugendleiterin"
+            text={`Hey!
+Ich bin Elisa, 19 Jahre alt, Schülerin und eine absolute „waschechte Münchnerin". Alles begann für mich vor zwei Jahren, als mir Youthbridge über die Schule vorgestellt wurde. Ich weiß noch genau, wie ich zu meinem ersten Treffen kam: Ich habe mich vom ersten Moment an unglaublich wohl und direkt willkommen gefühlt. Die offene und inspirierende Atmosphäre hat mich so begeistert, dass ich nicht lange gezögert und mich kurz darauf dazu entschieden habe, als Jugendleiterin aktiv zu werden.
+
+Was mich an dieser Aufgabe am meisten motiviert? Es ist ein fantastisches Gefühl, Teil eines Umfelds zu sein, in dem sich so viele engagierte und motivierte Jugendliche finden. Ich habe durch die Arbeit als Jugendleiterin bereits unglaublich viel über Teamwork, Verantwortung und Kommunikation gelernt.
+
+Ich bin stolz darauf, euch auf diesem Weg begleiten zu dürfen, und freue mich darauf, gemeinsam Neues zu bewegen!`}
+            imageSrc="/team-elisa.jpg"
+            imageAlt="Elisa Mikaelyan, Jugendleiterin bei YouthBridge"
           />
           <TeamMemberRow
             index={6}

@@ -139,12 +139,71 @@ function ReferentRow({
         >
           {title}
         </h3>
-        <p className="text-[#2c3e50] leading-relaxed text-[15px] whitespace-pre-line">
-          {text}
-        </p>
+        {text && (
+          <p className="text-[#2c3e50] leading-relaxed text-[15px] whitespace-pre-line">
+            {text}
+          </p>
+        )}
       </div>
-      {/* Image Area - no box, larger, portrait ratio */}
+      {/* Image Area - no box, portrait ratio */}
       <div className="w-full md:w-[320px] aspect-[3/4] relative rounded-2xl overflow-hidden shadow-md flex-shrink-0">
+        <Image
+          src={imageSrc}
+          alt={imageAlt || title}
+          fill
+          className="object-cover object-center"
+        />
+      </div>
+    </div>
+  )
+}
+
+/* ─── Juniorreferent compact card (name above image, no text body) ─── */
+function ReferentCardCompact({
+  title,
+  imageSrc,
+  imageAlt,
+}: {
+  title: string
+  imageSrc: string
+  imageAlt?: string
+}) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true)
+          observer.unobserve(el)
+        }
+      },
+      { threshold: 0.1 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <div
+      ref={ref}
+      className={`flex flex-col items-center text-center space-y-3 group transition-all duration-700 ease-out ${
+        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+      }`}
+    >
+      <h3
+        className="text-lg md:text-xl font-bold text-[#1a5276] leading-snug"
+        style={{
+          fontFamily: "var(--font-oswald), sans-serif",
+          letterSpacing: "0.01em",
+        }}
+      >
+        {title}
+      </h3>
+      <div className="w-full aspect-[3/4] relative rounded-2xl overflow-hidden shadow-md border border-[#d6eaf8] transition-all duration-300 group-hover:shadow-lg group-hover:scale-[1.02]">
         <Image
           src={imageSrc}
           alt={imageAlt || title}
@@ -162,7 +221,7 @@ function BookingCTA() {
 
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText("youthbridge@ejka.org")
+      await navigator.clipboard.writeText("bildungsangebote@ejka.org")
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
     } catch (err) {
@@ -190,10 +249,10 @@ function BookingCTA() {
           <div className="flex items-center gap-3 bg-white px-4 py-3 rounded-xl border border-[#d6eaf8] shadow-sm w-full sm:w-auto flex-1 justify-center sm:justify-start min-w-0">
             <Mail className="w-5 h-5 text-[#85c1e9] flex-shrink-0" />
             <a
-              href="mailto:youthbridge@ejka.org"
+              href="mailto:bildungsangebote@ejka.org"
               className="text-[#1a5276] font-semibold hover:underline truncate select-all"
             >
-              youthbridge@ejka.org
+              bildungsangebote@ejka.org
             </a>
           </div>
 
@@ -400,22 +459,16 @@ export function BildungsangeboteContent() {
           >
             Unsere Juniorreferenten
           </h2>
+
           <ReferentRow
             index={0}
-            title="Tymur Tsapliienko – Juniorreferent"
-            text="Als Juniorreferent bei YouthBridge setze ich mich aktiv für den Austausch zwischen jungen Menschen mit unterschiedlichen Hintergründen ein. Gerade in einer vielfältigen Stadt wie München sehe ich großes Potenzial darin, Dialogräume zu schaffen, in denen gegenseitiges Verständnis wachsen kann. Durch meinen eigenen Hintergrund habe ich erlebt, wie wichtig es ist, gehört zu werden und sich einbringen zu können. Diese Erfahrung motiviert mich, Projekte mitzugestalten, die Integration, Teilhabe und demokratisches Engagement fördern. Bei YouthBridge bringe ich meine Perspektive ein, entwickle meine Kompetenzen weiter und leiste einen konkreten Beitrag für eine offene und solidarische Gesellschaft."
-            imageSrc="/juniorreferent-1.jpg"
-            imageAlt="Juniorreferent Tymur Tsapliienko bei YouthBridge"
+            title="Mathias Kaspar – Juniorreferent"
+            text=""
+            imageSrc="/juniorreferent-mathias.jpg"
+            imageAlt="Juniorreferent Mathias Kaspar bei YouthBridge"
           />
           <ReferentRow
             index={1}
-            title="Samuel Sparberg – Juniorreferent"
-            text="Ich mag es, Dinge auseinanderzunehmen und gemeinsam neu zusammenzusetzen. Was mich motiviert: Räume schaffen, in denen verschiedene Perspektiven Platz haben."
-            imageSrc="/juniorreferent-2.jpg"
-            imageAlt="Juniorreferent Samuel Sparberg bei YouthBridge"
-          />
-          <ReferentRow
-            index={2}
             title="Jan Buchala – Juniorreferent"
             text={`Servus, ich bin Jan Buchala und bei YouthBridge als Referent aktiv. Aktuell strebe ich einen Master in Politikwissenschaft an der LMU an und setze mich intensiv mit gesellschaftlichen und politischen Entwicklungen auseinander.
 
@@ -427,6 +480,41 @@ Ich freue mich, meine Begeisterung für politische Bildung und das Sprechen vor 
             imageSrc="/juniorreferent-3.jpg"
             imageAlt="Juniorreferent Jan Buchala bei YouthBridge"
           />
+          <ReferentRow
+            index={2}
+            title="Tymur Tsapliienko – Juniorreferent"
+            text="Als Juniorreferent bei YouthBridge setze ich mich aktiv für den Austausch zwischen jungen Menschen mit unterschiedlichen Hintergründen ein. Gerade in einer vielfältigen Stadt wie München sehe ich großes Potenzial darin, Dialogräume zu schaffen, in denen gegenseitiges Verständnis wachsen kann. Durch meinen eigenen Hintergrund habe ich erlebt, wie wichtig es ist, gehört zu werden und sich einbringen zu können. Diese Erfahrung motiviert mich, Projekte mitzugestalten, die Integration, Teilhabe und demokratisches Engagement fördern. Bei YouthBridge bringe ich meine Perspektive ein, entwickle meine Kompetenzen weiter und leiste einen konkreten Beitrag für eine offene und solidarische Gesellschaft."
+            imageSrc="/juniorreferent-1.jpg"
+            imageAlt="Juniorreferent Tymur Tsapliienko bei YouthBridge"
+          />
+          <ReferentRow
+            index={3}
+            title="Samuel Sparberg – Juniorreferent"
+            text="Ich mag es, Dinge auseinanderzunehmen und gemeinsam neu zusammenzusetzen. Was mich motiviert: Räume schaffen, in denen verschiedene Perspektiven Platz haben."
+            imageSrc="/juniorreferent-2.jpg"
+            imageAlt="Juniorreferent Samuel Sparberg bei YouthBridge"
+          />
+
+          {/* Compact side-by-side grid for last 3 Juniorreferenten without text */}
+          <div className="pt-8 border-t border-[#e8f0f5]">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              <ReferentCardCompact
+                title="Hanna Kiskina – Juniorreferentin"
+                imageSrc="/juniorreferent-hanna.jpg"
+                imageAlt="Juniorreferentin Hanna Kiskina bei YouthBridge"
+              />
+              <ReferentCardCompact
+                title="Daria Zahoruiko – Juniorreferentin"
+                imageSrc="/juniorreferent-daria.jpg"
+                imageAlt="Juniorreferentin Daria Zahoruiko bei YouthBridge"
+              />
+              <ReferentCardCompact
+                title="Kim-Linh Heimann – Juniorreferentin"
+                imageSrc="/juniorreferent-kim.jpg"
+                imageAlt="Juniorreferentin Kim-Linh Heimann bei YouthBridge"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -440,10 +528,10 @@ Ich freue mich, meine Begeisterung für politische Bildung und das Sprechen vor 
               Unternehmen. Möchten Sie mehr über die YouBienare erfahren und sie
               buchen? Schreiben Sie uns:{" "}
               <a
-                href="mailto:youthbridge@ejka.org"
+                href="mailto:bildungsangebote@ejka.org"
                 className="text-[#2980b9] hover:underline"
               >
-                youthbridge@ejka.org
+                bildungsangebote@ejka.org
               </a>
               . Wir freuen uns auf den Austausch mit Ihnen!
             </p>

@@ -9,26 +9,31 @@ const slides = [
     id: 0,
     src: "/Bildungsangebote-slideshow-1.jpeg",
     alt: "Bildungsangebote Bild 1",
+    objectPosition: "center 15%",
   },
   {
     id: 1,
     src: "/Bildungsangebote-slideshow-2.jpeg",
     alt: "Bildungsangebote Bild 2",
+    objectPosition: "center 20%",
   },
   {
     id: 2,
     src: "/Bildungsangebote-slideshow-3.jpeg",
     alt: "Bildungsangebote Bild 3",
+    objectPosition: "center 25%",
   },
   {
     id: 3,
     src: "/Bildungsangebote-slideshow-4.jpeg",
     alt: "Bildungsangebote Bild 4",
+    objectPosition: "center 30%",
   },
   {
     id: 4,
     src: "/Bildungsangebote-slideshow-5.jpeg",
     alt: "Bildungsangebote Bild 5",
+    objectPosition: "center 20%",
   },
 ]
 
@@ -106,8 +111,7 @@ export function BildungsangeboteHero() {
 
   return (
     <section
-      className="relative w-full overflow-hidden bg-[#e8f0f5] aspect-[4/3] sm:aspect-video md:aspect-[16/9]"
-      style={{ maxHeight: "500px" }}
+      className="relative w-full overflow-hidden bg-[#1a5276] h-[520px] sm:h-[600px] md:h-[680px]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onTouchStart={onTouchStart}
@@ -118,51 +122,52 @@ export function BildungsangeboteHero() {
       {slides.map((slide, i) => (
         <div
           key={slide.id}
-          className="absolute inset-0 transition-opacity duration-700 ease-in-out flex flex-col items-center justify-center text-[#85c1e9]"
+          className="absolute inset-0 transition-opacity duration-700 ease-in-out overflow-hidden"
           style={{ opacity: i === current ? 1 : 0, zIndex: i === current ? 1 : 0 }}
           aria-hidden={i !== current}
         >
+          {/* Main cover image filling the full container, aligned to top/faces */}
           <Image
             src={slide.src}
             alt={slide.alt}
             fill
-            className="object-cover object-center"
+            className="object-cover"
+            style={{ objectPosition: slide.objectPosition }}
             priority={i === 0}
             loading={i === 0 ? "eager" : "lazy"}
           />
 
           {/* Overlay to ensure arrows and dots are visible over images */}
-          <div className="absolute inset-0 bg-black/10" />
+          <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-20 pointer-events-none" />
         </div>
       ))}
 
       {/* Bottom navigation bar: arrow · dots · arrow */}
       <div
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-3"
-        style={{ zIndex: 10 }}
+        className="absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-3 z-30"
       >
         {/* Left arrow */}
         <button
           onClick={prev}
           aria-label="Vorheriges Bild"
-          className="flex items-center justify-center w-8 h-8 rounded-full bg-white/30 backdrop-blur-sm text-black hover:bg-white/50 transition-colors duration-200"
+          className="flex items-center justify-center w-9 h-9 rounded-full bg-white/40 hover:bg-white/70 backdrop-blur-md text-slate-900 transition-all duration-200 shadow-md cursor-pointer active:scale-95"
         >
-          <ChevronLeft size={20} strokeWidth={2} />
+          <ChevronLeft size={22} strokeWidth={2.5} />
         </button>
 
         {/* Dot indicators */}
-        <div className="flex items-center gap-2 px-2 py-1.5 rounded-full bg-white/30 backdrop-blur-sm">
+        <div className="flex items-center gap-2 px-3 py-2 rounded-full bg-white/40 backdrop-blur-md shadow-md">
           {slides.map((_, i) => (
             <button
               key={i}
               onClick={() => goTo(i)}
               aria-label={`Slide ${i + 1}`}
-              className="transition-all duration-300 shadow-sm"
+              className="transition-all duration-300 shadow-sm cursor-pointer"
               style={{
-                width: i === current ? "22px" : "8px",
+                width: i === current ? "24px" : "8px",
                 height: "8px",
                 borderRadius: "999px",
-                background: i === current ? "#1a5276" : "rgba(26, 82, 118, 0.4)",
+                background: i === current ? "#1a5276" : "rgba(26, 82, 118, 0.5)",
               }}
             />
           ))}
@@ -172,9 +177,9 @@ export function BildungsangeboteHero() {
         <button
           onClick={next}
           aria-label="Nächstes Bild"
-          className="flex items-center justify-center w-8 h-8 rounded-full bg-white/30 backdrop-blur-sm text-black hover:bg-white/50 transition-colors duration-200"
+          className="flex items-center justify-center w-9 h-9 rounded-full bg-white/40 hover:bg-white/70 backdrop-blur-md text-slate-900 transition-all duration-200 shadow-md cursor-pointer active:scale-95"
         >
-          <ChevronRight size={20} strokeWidth={2} />
+          <ChevronRight size={22} strokeWidth={2.5} />
         </button>
       </div>
     </section>
