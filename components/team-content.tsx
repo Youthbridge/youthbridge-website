@@ -160,7 +160,7 @@ Ich bin überzeugt, dass echter Dialog zwischen jungen Menschen und fundierte po
           />
           <TeamMemberRow
             index={5}
-            title="Elisa Mikaelyan – Jugendleiterin"
+            title="Elisa Meidinger-Mikaelyan – Jugendleiterin"
             text={`Hey!
 Ich bin Elisa, 19 Jahre alt, Schülerin und eine absolute „waschechte Münchnerin". Alles begann für mich vor zwei Jahren, als mir Youthbridge über die Schule vorgestellt wurde. Ich weiß noch genau, wie ich zu meinem ersten Treffen kam: Ich habe mich vom ersten Moment an unglaublich wohl und direkt willkommen gefühlt. Die offene und inspirierende Atmosphäre hat mich so begeistert, dass ich nicht lange gezögert und mich kurz darauf dazu entschieden habe, als Jugendleiterin aktiv zu werden.
 
@@ -168,7 +168,7 @@ Was mich an dieser Aufgabe am meisten motiviert? Es ist ein fantastisches Gefüh
 
 Ich bin stolz darauf, euch auf diesem Weg begleiten zu dürfen, und freue mich darauf, gemeinsam Neues zu bewegen!`}
             imageSrc="/team-elisa.jpg"
-            imageAlt="Elisa Mikaelyan, Jugendleiterin bei YouthBridge"
+            imageAlt="Elisa Meidinger-Mikaelyan, Jugendleiterin bei YouthBridge"
           />
           <TeamMemberRow
             index={6}
