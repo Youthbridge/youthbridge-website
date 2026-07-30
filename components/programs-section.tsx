@@ -13,6 +13,7 @@ const programs = [
       "Bildungsreisen",
       "Kamingespräche mit gefragten Experten",
       "spannende Fortbildungsseminare",
+      "Präsenzveranstaltungen in München und Nürnberg",
     ],
     buttonText: "MACH MIT!",
     buttonIcon: ExternalLink,
