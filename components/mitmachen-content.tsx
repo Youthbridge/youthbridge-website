@@ -377,15 +377,10 @@ function RegistrationForm({
             onChange={onChange}
             placeholder="+49 171 …"
           />
-          <FormField
-            id="geburtsdatum"
-            name="geburtsdatum"
-            label="Geburtsdatum"
-            type="date"
-            icon={Calendar}
-            required
+          <GeburtsdatumField
             value={formData.geburtsdatum as string}
             onChange={onChange}
+            required
           />
         </div>
 
@@ -494,6 +489,212 @@ function RegistrationForm({
           )}
         </button>
       </form>
+    </div>
+  )
+}
+
+/* ─── Geburtsdatum Field Component ─── */
+function GeburtsdatumField({
+  value,
+  onChange,
+  required,
+}: {
+  value: string
+  onChange: (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => void
+  required?: boolean
+}) {
+  const [day, setDay] = useState("")
+  const [month, setMonth] = useState("")
+  const [year, setYear] = useState("")
+  const [useTextInput, setUseTextInput] = useState(false)
+  const [manualValue, setManualValue] = useState(value || "")
+
+  useEffect(() => {
+    if (!value) {
+      setDay("")
+      setMonth("")
+      setYear("")
+      setManualValue("")
+      return
+    }
+    setManualValue(value)
+    if (value.includes(".")) {
+      const parts = value.split(".")
+      if (parts.length === 3) {
+        setDay(parts[0])
+        setMonth(parts[1])
+        setYear(parts[2])
+      }
+    } else if (value.includes("-")) {
+      const parts = value.split("-")
+      if (parts.length === 3) {
+        setYear(parts[0])
+        setMonth(parts[1])
+        setDay(parts[2])
+      }
+    }
+  }, [value])
+
+  const monthNames = [
+    { value: "01", label: "Jan (01)" },
+    { value: "02", label: "Feb (02)" },
+    { value: "03", label: "Mär (03)" },
+    { value: "04", label: "Apr (04)" },
+    { value: "05", label: "Mai (05)" },
+    { value: "06", label: "Jun (06)" },
+    { value: "07", label: "Jul (07)" },
+    { value: "08", label: "Aug (08)" },
+    { value: "09", label: "Sep (09)" },
+    { value: "10", label: "Okt (10)" },
+    { value: "11", label: "Nov (11)" },
+    { value: "12", label: "Dez (12)" },
+  ]
+
+  const currentYear = new Date().getFullYear()
+  const years = Array.from({ length: currentYear - 1930 + 1 }, (_, i) =>
+    String(currentYear - i)
+  )
+  const days = Array.from({ length: 31 }, (_, i) =>
+    String(i + 1).padStart(2, "0")
+  )
+
+  const handleSelectChange = (d: string, m: string, y: string) => {
+    setDay(d)
+    setMonth(m)
+    setYear(y)
+
+    let finalVal = ""
+    if (d && m && y) {
+      finalVal = `${d}.${m}.${y}`
+    }
+    const syntheticEvent = {
+      target: {
+        name: "geburtsdatum",
+        value: finalVal,
+      },
+    } as React.ChangeEvent<HTMLInputElement>
+    onChange(syntheticEvent)
+  }
+
+  const handleManualChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setManualValue(e.target.value)
+    onChange(e)
+  }
+
+  return (
+    <div>
+      <div className="flex items-center justify-between mb-1.5">
+        <label
+          htmlFor="geburtsdatum"
+          className="block text-sm font-semibold text-[#1a5276]"
+        >
+          Geburtsdatum
+          {required && <span className="text-[#e74c3c] ml-0.5">*</span>}
+        </label>
+        <button
+          type="button"
+          onClick={() => setUseTextInput(!useTextInput)}
+          className="text-xs font-medium text-[#3498db] hover:text-[#1a5276] transition-colors underline focus:outline-none"
+        >
+          {useTextInput ? "Dropdowns nutzen" : "Datum/Jahr eintippen"}
+        </button>
+      </div>
+
+      {useTextInput ? (
+        <div className="relative">
+          <Calendar
+            size={16}
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-[#85c1e9]"
+          />
+          <input
+            id="geburtsdatum"
+            name="geburtsdatum"
+            type="text"
+            required={required}
+            value={manualValue}
+            onChange={handleManualChange}
+            placeholder="TT.MM.JJJJ (z.B. 15.05.2006)"
+            className="w-full pl-11 pr-4 py-3 rounded-xl border border-[#d6eaf8] bg-[#f9fcfe] text-[#2c3e50] text-sm focus:outline-none focus:ring-2 focus:ring-[#5dade2] focus:border-transparent transition-all placeholder:text-[#aab7c4]"
+          />
+        </div>
+      ) : (
+        <div className="space-y-1.5">
+          <div className="grid grid-cols-[1fr_1.3fr_1.1fr] gap-1.5">
+            {/* Tag */}
+            <select
+              required={required}
+              value={day}
+              onChange={(e) => handleSelectChange(e.target.value, month, year)}
+              className="w-full px-2 py-3 rounded-xl border border-[#d6eaf8] bg-[#f9fcfe] text-[#2c3e50] text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#5dade2] focus:border-transparent transition-all appearance-none cursor-pointer text-center"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235d6d7e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E")`,
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "right 4px center",
+              }}
+            >
+              <option value="">Tag</option>
+              {days.map((d) => (
+                <option key={d} value={d}>
+                  {parseInt(d, 10)}
+                </option>
+              ))}
+            </select>
+
+            {/* Monat */}
+            <select
+              required={required}
+              value={month}
+              onChange={(e) => handleSelectChange(day, e.target.value, year)}
+              className="w-full px-2 py-3 rounded-xl border border-[#d6eaf8] bg-[#f9fcfe] text-[#2c3e50] text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#5dade2] focus:border-transparent transition-all appearance-none cursor-pointer text-center"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235d6d7e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E")`,
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "right 4px center",
+              }}
+            >
+              <option value="">Monat</option>
+              {monthNames.map((m) => (
+                <option key={m.value} value={m.value}>
+                  {m.label}
+                </option>
+              ))}
+            </select>
+
+            {/* Jahr */}
+            <select
+              required={required}
+              value={year}
+              onChange={(e) => handleSelectChange(day, month, e.target.value)}
+              className="w-full px-2 py-3 rounded-xl border border-[#d6eaf8] bg-[#f9fcfe] text-[#2c3e50] text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#5dade2] focus:border-transparent transition-all appearance-none cursor-pointer text-center font-medium"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235d6d7e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E")`,
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "right 4px center",
+              }}
+            >
+              <option value="">Jahr</option>
+              {years.map((y) => (
+                <option key={y} value={y}>
+                  {y}
+                </option>
+              ))}
+            </select>
+          </div>
+          {/* Quick info / hint */}
+          <div className="flex items-center justify-between text-[11px] text-[#5d6d7e] px-1 pt-0.5">
+            <span>💡 Tastatur: &apos;2006&apos; im Jahr-Feld eingeben</span>
+            {day && month && year && (
+              <span className="font-semibold text-[#1a5276] bg-[#eaf2f8] px-2 py-0.5 rounded-md">
+                {day}.{month}.{year}
+              </span>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   )
 }
