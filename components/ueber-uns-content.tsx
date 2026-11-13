@@ -1,6 +1,3 @@
-"use client"
-
-import { useEffect, useState } from "react"
 import Link from "next/link"
 import {
   ArrowRight,
@@ -23,12 +20,6 @@ const keyMilestones = [
 ]
 
 export function UeberUnsContent() {
-  const [visible, setVisible] = useState(false)
-
-  useEffect(() => {
-    setVisible(true)
-  }, [])
-
   return (
     <div className="w-full bg-slate-50/50">
       {/* ── 1. Hero Banner (passend zu Verband & Franken) ── */}
@@ -37,11 +28,7 @@ export function UeberUnsContent() {
         <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-white/5 blur-3xl" />
         <div className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-cyan-400/10 blur-2xl animate-pulse" />
 
-        <div
-          className={`relative z-10 max-w-5xl mx-auto px-6 text-center transition-all duration-1000 ease-out ${
-            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
+        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
           <div className="inline-flex items-center gap-2 bg-white/10 text-cyan-200 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5 backdrop-blur-md border border-white/15">
             <Users size={14} className="text-cyan-300" />
             <span>Europäische Janusz Korczak Akademie e.V.</span>
@@ -91,11 +78,7 @@ export function UeberUnsContent() {
       {/* ── Main Content Container ── */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16 space-y-10 md:space-y-12">
         {/* ── SEKTION 1: Über uns: YouthBridge (Intro Concept Card) ── */}
-        <section
-          className={`bg-white border border-slate-100 rounded-3xl p-8 md:p-12 shadow-xl shadow-slate-200/40 transition-all duration-700 ${
-            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-          }`}
-        >
+        <section className="bg-white border border-slate-100 rounded-3xl p-8 md:p-12 shadow-xl shadow-slate-200/40">
           <div className="border-l-4 border-[#1a3a8f] pl-4 mb-6">
             <span className="text-xs font-bold uppercase tracking-widest text-[#2980b9]">
               Projekt &amp; Jugendverband
