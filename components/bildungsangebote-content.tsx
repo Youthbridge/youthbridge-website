@@ -92,12 +92,14 @@ function ReferentRow({
   index,
   imageSrc,
   imageAlt,
+  imagePosition = "object-center",
 }: {
   title: string
   text: string
   index: number
   imageSrc: string
   imageAlt?: string
+  imagePosition?: string
 }) {
   const ref = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
@@ -151,7 +153,7 @@ function ReferentRow({
           src={imageSrc}
           alt={imageAlt || title}
           fill
-          className="object-cover object-center"
+          className={`object-cover ${imagePosition}`}
         />
       </div>
     </div>
@@ -494,24 +496,52 @@ Ich freue mich, meine Begeisterung für politische Bildung und das Sprechen vor 
             imageSrc="/juniorreferent-2.jpg"
             imageAlt="Juniorreferent Samuel Sparberg bei YouthBridge"
           />
+          <ReferentRow
+            index={4}
+            title="Anna Mathilda Korff – Juniorreferentin"
+            text={`Servus, ich bin Mathilda, studiere Politik-Wirtschaftswissenschaften an der LMU München und bin bei YouthBridge als Juniorreferentin aktiv.
 
-          {/* Compact side-by-side grid for last 3 Juniorreferenten without text */}
+Demokratie ist für mich nichts Selbstverständliches. Sie lebt davon, dass Menschen mitreden, einander zuhören und Verantwortung übernehmen. Gerade junge Menschen haben viel zu sagen. Sie brauchen aber Räume, in denen sie gehört werden und ihre eigene Haltung entwickeln können.
+
+Mich motiviert es, solche Räume mitzugestalten. In meinen Workshops möchte ich Schülerinnen und Schüler ermutigen, Fragen zu stellen, Meinungen kritisch zu hinterfragen und andere Perspektiven ernst zu nehmen. Sie sollen erleben, dass Politik kein fernes Thema ist: Sie betrifft ihren Alltag, und sie können selbst etwas bewegen.
+
+Bei YouthBridge kann ich meine Begeisterung für politische Bildung mit der Arbeit mit jungen Menschen verbinden. So möchte ich meinen Teil zu einer offenen, vielfältigen und starken Demokratie in Bayern beitragen.`}
+            imageSrc="/juniorreferent-mathilda.jpg"
+            imageAlt="Juniorreferentin Anna Mathilda Korff bei YouthBridge"
+            imagePosition="object-[36%_20%]"
+          />
+          <ReferentRow
+            index={5}
+            title="Daria Zahoruiko – Juniorreferentin"
+            text={`Als ich gebeten wurde, etwas über meine Motivation im Projekt zu erzählen, musste ich kurz überlegen – einen festen Ansatz habe ich eigentlich nicht. Ich lerne einfach gerne Menschen kennen, komme schnell ins Gespräch und finde fast immer einen gemeinsamen Nenner.
+
+Das Projekt gibt mir deshalb auch die Möglichkeit, mein Deutsch zu verbessern – vor allem durch Gespräche, neue Bekanntschaften und den Austausch mit anderen Menschen.
+
+Mich motiviert vor allem die Bewegung: nicht zu Hause sitzen, sondern unterwegs sein, sich austauschen, Ideen entwickeln, die oft auch rund um Kunst und Geschichte, die mir besonders am Herzen liegen.
+
+Also mein Ansatz? Offen sein, mitmachen und dabei darf es ruhig kreativ und manchmal auch ein bisschen chaotisch werden!`}
+            imageSrc="/juniorreferent-daria.jpg"
+            imageAlt="Juniorreferentin Daria Zahoruiko bei YouthBridge"
+          />
+          <ReferentRow
+            index={6}
+            title="Kim-Linh Heimann – Juniorreferentin"
+            text={`Hallöchen! Ich bin Kim-Linh und komme aus dem wunderschönen Nürnberg. Kurz nachdem YouthBridge Franken 2024 gegründet wurde, war ich von Beginn an dabei und bin dort die erste Absolventin geworden.
+
+Bei uns geht es darum, einen Raum für Austausch zu schaffen und Jugendlichen eine Stimme zu geben, damit sie sich gehört und ernst genommen fühlen. Denn in einer Zeit, in der gesellschaftliche Spannungen zunehmen und Hass sowie Hetze sichtbarer werden und sich auch unter jungen Menschen verbreiten, ist es besonders wichtig, demokratisches Bewusstsein zu stärken und zur aktiven Teilhabe zu ermutigen.
+
+Als Juniorreferentin kann ich nun selbst einen Beitrag leisten. Mir ist es wichtig, nicht nur Wissen zu vermitteln, sondern zum Mitdenken und Diskutieren anzuregen und gleichzeitig Werkzeuge an die Hand zu geben, um Informationen kritisch zu hinterfragen. Ich freue mich darauf, gemeinsam mit anderen unsere vielfältige und demokratische Gesellschaft zu stärken!`}
+            imageSrc="/juniorreferent-kim.jpg"
+            imageAlt="Juniorreferentin Kim-Linh Heimann bei YouthBridge"
+          />
+
+          {/* Compact card for remaining Juniorreferentin without text */}
           <div className="pt-8 border-t border-[#e8f0f5]">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="max-w-xs mx-auto">
               <ReferentCardCompact
                 title="Hanna Kiskina – Juniorreferentin"
                 imageSrc="/juniorreferent-hanna.jpg"
                 imageAlt="Juniorreferentin Hanna Kiskina bei YouthBridge"
-              />
-              <ReferentCardCompact
-                title="Daria Zahoruiko – Juniorreferentin"
-                imageSrc="/juniorreferent-daria.jpg"
-                imageAlt="Juniorreferentin Daria Zahoruiko bei YouthBridge"
-              />
-              <ReferentCardCompact
-                title="Kim-Linh Heimann – Juniorreferentin"
-                imageSrc="/juniorreferent-kim.jpg"
-                imageAlt="Juniorreferentin Kim-Linh Heimann bei YouthBridge"
               />
             </div>
           </div>

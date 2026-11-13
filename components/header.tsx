@@ -10,8 +10,9 @@ const navItems = [
   { label: "MITMACHEN", href: "/mitmachen" },
   {
     label: "ÜBER UNS",
-    href: "/ueber-uns/team",
+    href: "/ueber-uns",
     dropdown: [
+      { label: "Über uns", href: "/ueber-uns" },
       { label: "Unser Team", href: "/ueber-uns/team" },
       { label: "Unsere Geschichte", href: "/ueber-uns/geschichte" },
     ],
